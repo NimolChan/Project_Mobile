@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stylishcloset/widgets/common/clothes_item.dart';
 import 'package:stylishcloset/widgets/common/navigation.dart';
 
 class VisualizationScreen extends StatelessWidget {
@@ -10,10 +11,7 @@ class VisualizationScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'Visualization',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 24,
-          ),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
         ),
         centerTitle: true,
         elevation: 0,
@@ -22,43 +20,27 @@ class VisualizationScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          // crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // Data Visualization Section
-            Card(
-              elevation: 4,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: const Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    Text(
-                      'Your Activity Overview',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    Placeholder(
-                      fallbackHeight: 200,
-                      color: Colors.purple,
-                    ), // Replace with actual chart
-                  ],
-                ),
-              ),
+            ClothesItem(
+              id: 2,
+              name: "Classic White Tee",
+              color: "White",
+              size: "L",
+              location: ["Los Angeles", "Store 1"],
+              tag: ["casual", "summer"],
+              type: "T-Shirt",
+              price: 19.99,
+              image: "https://example.com/images/white_tee.jpg",
             ),
+
             const SizedBox(height: 20),
-            
+
             // Recent Items Section
             const Text(
               'Recent Collections',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-              ),
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
             ),
             const SizedBox(height: 10),
             Expanded(

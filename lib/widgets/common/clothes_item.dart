@@ -41,29 +41,12 @@ class ClothesItem extends StatelessWidget {
                 child: Image.network(
                   image,
                   height: 200,
-                  width: double.infinity,
+                  width: 100,
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) =>
                       const Icon(Icons.broken_image, size: 100),
                 ),
               ),
-            ),
-            const SizedBox(height: 12),
-            Text(
-              name,
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            Text('$type - Size $size • $color'),
-            Text('Price: \$${price.toStringAsFixed(2)}'),
-            Text('Available at: ${location.join(", ")}'),
-            Wrap(
-              spacing: 6,
-              children: tag
-                  .map((t) => Chip(
-                        label: Text(t),
-                        backgroundColor: Colors.grey[200],
-                      ))
-                  .toList(),
             ),
           ],
         ),
