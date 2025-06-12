@@ -9,7 +9,7 @@ class CollectionScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Collection')),
       body: const Center(child: Text('Collection Content')),
-      bottomNavigationBar: const CustomBottomNav(),
+      bottomNavigationBar: const CustomBottomNav(currentRoute: '/collection'),
     );
   }
 }

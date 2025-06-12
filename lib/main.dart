@@ -17,7 +17,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFC064F1)),
       ),
-      initialRoute: '/auth',
+      // initialRoute: '/auth',
+      initialRoute: '/visualize',
       onGenerateRoute: RouteGenerator.generateRoute,
     );
   }

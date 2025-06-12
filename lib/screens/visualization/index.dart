@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:stylishcloset/utils/constant.dart';
+// import 'package:stylishcloset/utils/data.dart';
 import 'package:stylishcloset/widgets/common/clothes_item.dart';
 import 'package:stylishcloset/widgets/common/navigation.dart';
 
@@ -9,79 +11,239 @@ class VisualizationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Visualization',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-        ),
+        automaticallyImplyLeading: false,
         centerTitle: true,
         elevation: 0,
         backgroundColor: Colors.transparent,
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SizedBox(
+            width:
+                60, // Or your preferred size (60 looks good for circular avatars)
+            height: 60, // Must match width to make a perfect circle
+            child: ClipOval(
+              child: Image.asset(
+                'assets/images/logo.png',
+                fit: BoxFit.cover, // Changed to cover to fill the circle
+              ),
+            ),
+          ),
+        ),
+        title: Text(
+          'Visualization',
+          style: AppFonts.meriendaDisplayLarge.copyWith(
+            fontWeight: AppFonts.bold, // Override weight if needed
+          ),
+        ),
+        actions: [
+          // Optional: Add invisible widget to balance the logo space
+          Container(width: 48), // Matches leading width
+        ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(12.0),
         child: Column(
           // crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // Data Visualization Section
-            ClothesItem(
-              id: 2,
-              name: "Classic White Tee",
-              color: "White",
-              size: "L",
-              location: ["Los Angeles", "Store 1"],
-              tag: ["casual", "summer"],
-              type: "T-Shirt",
-              price: 19.99,
-              image: "https://example.com/images/white_tee.jpg",
-            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ClothesItem(
+                      width: 100,
 
-            const SizedBox(height: 20),
+                      id: 2,
+                      name: "Classic White Tee",
+                      color: "White",
+                      size: "L",
+                      location: ["Los Angeles", "Store 1"],
+                      tag: ["casual", "summer"],
+                      type: "T-Shirt",
+                      price: 19.99,
+                      image: "assets/images/cardigan.jpg",
+                    ),
+                    ClothesItem(
+                      width: 100,
 
-            // Recent Items Section
-            const Text(
-              'Recent Collections',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-            ),
-            const SizedBox(height: 10),
-            Expanded(
-              child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  childAspectRatio: 0.8,
+                      id: 2,
+                      name: "Classic White Tee",
+                      color: "White",
+                      size: "L",
+                      location: ["Los Angeles", "Store 1"],
+                      tag: ["casual", "summer"],
+                      type: "T-Shirt",
+                      price: 19.99,
+                      image: "assets/images/cardigan.jpg",
+                    ),
+                    ClothesItem(
+                      width: 100,
+
+                      id: 2,
+                      name: "Classic White Tee",
+                      color: "White",
+                      size: "L",
+                      location: ["Los Angeles", "Store 1"],
+                      tag: ["casual", "summer"],
+                      type: "T-Shirt",
+                      price: 19.99,
+                      image: "assets/images/cardigan.jpg",
+                    ),
+                    ClothesItem(
+                      width: 100,
+
+                      id: 2,
+                      name: "Classic White Tee",
+                      color: "White",
+                      size: "L",
+                      location: ["Los Angeles", "Store 1"],
+                      tag: ["casual", "summer"],
+                      type: "T-Shirt",
+                      price: 19.99,
+                      image: "assets/images/cardigan.jpg",
+                    ),
+                  ],
                 ),
-                itemCount: 6,
-                itemBuilder: (context, index) {
-                  return Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ClothesItem(
+                      width: 150,
+
+                      id: 2,
+                      name: "Classic White Tee",
+                      color: "White",
+                      size: "L",
+                      location: ["Los Angeles", "Store 1"],
+                      tag: ["casual", "summer"],
+                      type: "T-Shirt",
+                      price: 19.99,
+                      image: "assets/images/cardigan.jpg",
                     ),
-                    child: Column(
-                      children: [
-                        Expanded(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8),
-                            child: const Placeholder(), // Replace with image
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            'Collection ${index + 1}',
-                            style: const TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ],
+                    ClothesItem(
+                      width: 150,
+
+                      id: 2,
+                      name: "Classic White Tee",
+                      color: "White",
+                      size: "L",
+                      location: ["Los Angeles", "Store 1"],
+                      tag: ["casual", "summer"],
+                      type: "T-Shirt",
+                      price: 19.99,
+                      image: "assets/images/cardigan.jpg",
                     ),
-                  );
-                },
-              ),
+                  ],
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ClothesItem(
+                      width: 100,
+
+                      id: 2,
+                      name: "Classic White Tee",
+                      color: "White",
+                      size: "L",
+                      location: ["Los Angeles", "Store 1"],
+                      tag: ["casual", "summer"],
+                      type: "T-Shirt",
+                      price: 19.99,
+                      image: "assets/images/cardigan.jpg",
+                    ),
+                    ClothesItem(
+                      width: 100,
+
+                      id: 2,
+                      name: "Classic White Tee",
+                      color: "White",
+                      size: "L",
+                      location: ["Los Angeles", "Store 1"],
+                      tag: ["casual", "summer"],
+                      type: "T-Shirt",
+                      price: 19.99,
+                      image: "assets/images/cardigan.jpg",
+                    ),
+                    ClothesItem(
+                      width: 100,
+
+                      id: 2,
+                      name: "Classic White Tee",
+                      color: "White",
+                      size: "L",
+                      location: ["Los Angeles", "Store 1"],
+                      tag: ["casual", "summer"],
+                      type: "T-Shirt",
+                      price: 19.99,
+                      image: "assets/images/cardigan.jpg",
+                    ),
+                    ClothesItem(
+                      width: 100,
+
+                      id: 2,
+                      name: "Classic White Tee",
+                      color: "White",
+                      size: "L",
+                      location: ["Los Angeles", "Store 1"],
+                      tag: ["casual", "summer"],
+                      type: "T-Shirt",
+                      price: 19.99,
+                      image: "assets/images/cardigan.jpg",
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ClothesItem(
+                  width: 100,
+
+                  id: 2,
+                  name: "Classic White Tee",
+                  color: "White",
+                  size: "L",
+                  location: ["Los Angeles", "Store 1"],
+                  tag: ["casual", "summer"],
+                  type: "T-Shirt",
+                  price: 19.99,
+                  image: "assets/images/cardigan.jpg",
+                ),
+                ClothesItem(
+                  width: 100,
+
+                  id: 2,
+                  name: "Classic White Tee",
+                  color: "White",
+                  size: "L",
+                  location: ["Los Angeles", "Store 1"],
+                  tag: ["casual", "summer"],
+                  type: "T-Shirt",
+                  price: 19.99,
+                  image: "assets/images/cardigan.jpg",
+                ),
+                ClothesItem(
+                  width: 100,
+
+                  id: 2,
+                  name: "Classic White Tee",
+                  color: "White",
+                  size: "L",
+                  location: ["Los Angeles", "Store 1"],
+                  tag: ["casual", "summer"],
+                  type: "T-Shirt",
+                  price: 19.99,
+                  image: "assets/images/cardigan.jpg",
+                ),
+              ],
             ),
           ],
         ),
       ),
-      bottomNavigationBar: CustomBottomNav(),
+      bottomNavigationBar: CustomBottomNav(currentRoute: '/visualize'),
     );
   }
 }

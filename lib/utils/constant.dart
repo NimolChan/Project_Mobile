@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 
+class AppRoutes {
+  static const auth = '/auth';
+  static const home = '/home';
+  static const collection = '/collection';
+  static const visualize = '/visualize';
+  static const personal = '/personal';
+  static const settings = '/settings';
+}
 class AppColors {
   // solid colors
   static const Color purple = Color(0xFFC064F1);

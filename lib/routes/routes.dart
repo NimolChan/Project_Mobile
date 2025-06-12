@@ -8,6 +8,9 @@ import 'package:stylishcloset/screens/visualization/index.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
+    // Just print settings.name; that’s the route you asked for.
+    debugPrint("generateRoute was called with name = ${settings.name}");
+
     switch (settings.name) {
       case '/auth':
         return MaterialPageRoute(builder: (_) => AuthenticationScreen());

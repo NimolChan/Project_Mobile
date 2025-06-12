@@ -9,7 +9,7 @@ class PersonalizationScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Personalization')),
       body: const Center(child: Text('Personalization Content')),
-      bottomNavigationBar: const CustomBottomNav(),
+      bottomNavigationBar: const CustomBottomNav(currentRoute: '/personal'),
     );
   }
 }
