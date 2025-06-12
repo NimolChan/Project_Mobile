@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:stylishcloset/screens/authentication/index.dart';
 import 'package:stylishcloset/screens/collection/index.dart';
 import 'package:stylishcloset/screens/home/index.dart';
-import 'package:stylishcloset/screens/personalization/index.dart';
+import 'package:stylishcloset/screens/personalization/personalize_screen.dart';
 import 'package:stylishcloset/screens/setting/index.dart';
 import 'package:stylishcloset/screens/visualization/index.dart';
 
