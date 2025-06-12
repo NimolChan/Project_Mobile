@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stylishcloset/widgets/common/navigation.dart';
 import '../../widgets/personalize/tips_carousel.dart';
 import '../../widgets/personalize/recommendation_dropdown.dart';
 import '../../widgets/personalize/clothing_grid.dart';
@@ -26,7 +27,6 @@ class _PersonalizationScreenState extends State<PersonalizationScreen> {
         elevation: 0,
         toolbarHeight: 60,
         automaticallyImplyLeading: false, // no default back button
-
         // Custom layout: logo left, title centered
         title: Stack(
           alignment: Alignment.center,
@@ -150,6 +150,7 @@ class _PersonalizationScreenState extends State<PersonalizationScreen> {
           ),
         ),
       ),
+      bottomNavigationBar: CustomBottomNav(currentRoute: '/personal'),
     );
   }
 }
