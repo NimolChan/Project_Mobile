@@ -63,6 +63,7 @@ flutter:
     - assets/images/
     - assets/images/shirt1.png
     - assets/images/logo.png
+    - assets/images/cardigan.jpg
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
@@ -70,7 +71,6 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

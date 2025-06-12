@@ -215,8 +215,7 @@ class _HomeScreenAppState extends State<HomeScreen> {
           ),
         ),
 
-      bottomNavigationBar: 
-        const CustomBottomNav(),
+      bottomNavigationBar: const CustomBottomNav(currentRoute: '/home'),
     );
   }
   }

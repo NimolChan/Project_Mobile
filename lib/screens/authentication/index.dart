@@ -16,7 +16,7 @@ class AuthenticationScreen extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.transparent,
       ),
-      bottomNavigationBar: const CustomBottomNav(),
+      bottomNavigationBar: const CustomBottomNav(currentRoute: '/home'),
     );
   }
 }
