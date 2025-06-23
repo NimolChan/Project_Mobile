@@ -1,74 +1,57 @@
 import 'package:flutter/material.dart';
 
-class SearchCreateFilter extends StatelessWidget {
-  const SearchCreateFilter({super.key});
+class CustomBottomNav extends StatelessWidget {
+  final String currentRoute;
+
+  const CustomBottomNav({super.key, required this.currentRoute});
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        // Search Field
-        Expanded(
-          child: Container(
-            height: 40,
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey.shade400),
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: Row(
+    final items = [
+      {'icon': Icons.home_outlined, 'label': 'Home', 'route': '/home'},
+      {'icon': Icons.dashboard_outlined, 'label': 'Sets', 'route': '/set'},
+      {'icon': Icons.stars_outlined, 'label': 'Visualize', 'route': '/visualize'},
+      {'icon': Icons.person_outline, 'label': 'Personal', 'route': '/personal'},
+      {'icon': Icons.settings_outlined, 'label': 'Setting', 'route': '/setting'},
+    ];
+
+    return Container(
+      height: 90,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border(top: BorderSide(color: Colors.grey.shade200)),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: items.map((item) {
+          final isSelected = currentRoute == item['route'];
+          return GestureDetector(
+            onTap: () {
+              // Navigate to the respective route
+              Navigator.pushNamed(context, item['route'] as String);
+            },
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(Icons.search, color: Colors.grey),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Search",
-                      border: InputBorder.none,
-                      isDense: true,
-                      hintStyle: TextStyle(color: Colors.grey.shade600),
-                    ),
+                Icon(
+                  item['icon'] as IconData,
+                  color: isSelected ? const Color(0xFF6B73FF) : Colors.grey,
+                  size: 24,
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  item['label'] as String,
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: isSelected ? const Color(0xFF6B73FF) : Colors.grey,
+                    fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
                   ),
                 ),
               ],
             ),
-          ),
-        ),
-        const SizedBox(width: 10),
-
-        // Create Button
-        Container(
-          height: 40,
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey.shade400),
-            borderRadius: BorderRadius.circular(30),
-          ),
-          child: const Center(
-            child: Text(
-              'Create',
-              style: TextStyle(color: Colors.grey),
-            ),
-          ),
-        ),
-        const SizedBox(width: 10),
-
-        // Filter Icon Button
-        Container(
-          height: 40,
-          width: 40,
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey.shade400),
-            borderRadius: BorderRadius.circular(30),
-          ),
-          child: IconButton(
-            icon: const Icon(Icons.tune, color: Colors.grey, size: 20),
-            onPressed: () {
-              // Handle filter action
-            },
-          ),
-        ),
-      ],
+          );
+        }).toList(),
+      ),
     );
   }
 }

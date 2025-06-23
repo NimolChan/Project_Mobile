@@ -17,7 +17,7 @@ class RouteGenerator {
       case '/home':
         return MaterialPageRoute(builder: (_) => HomeScreen());
       case '/collection':
-        return MaterialPageRoute(builder: (_) => CollectionScreen());
+        return MaterialPageRoute(builder: (_) =>SetScreen());
       case '/visualize':
         return MaterialPageRoute(builder: (_) => VisualizationScreen());
       case '/personal':
