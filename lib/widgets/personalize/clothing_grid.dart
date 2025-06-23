@@ -1,77 +1,89 @@
 import 'package:flutter/material.dart';
-import 'recommendation_dropdown.dart';
-import '../../../data/dummy_data.dart';
+// import '../../../data/dummy_data.dart';
+import '../../utils/model.dart';
+import '../common/clothing_item.dart';
+import '../common/clothing_card.dart';
+import '../../utils/data.dart'
+    as data; // This should contain clothingItems list
 
 class ClothingGrid extends StatelessWidget {
   final String? selectedCategory;
   final Color? selectedColor;
   final String mode; // 'category' or 'color'
+  final int? limit; // Add this
 
   const ClothingGrid({
     super.key,
     this.selectedCategory,
     this.selectedColor,
     required this.mode,
+    this.limit, // Add this
   });
 
   @override
   Widget build(BuildContext context) {
-    List filteredItems = [];
+    List<ClothingItem> filteredItems = [];
 
     if (mode == 'category' && selectedCategory != null) {
-      filteredItems = selectedCategory == "All"
-          ? clothingItems
-          : clothingItems
-              .where((item) => item.category == selectedCategory)
-              .toList();
+      final category = selectedCategory?.trim().toLowerCase() ?? "all";
+      filteredItems =
+          category == "all"
+              ? data.clothingItems
+              : data.clothingItems
+                  .where(
+                    (item) =>
+                        item.tag.any((t) => t.trim().toLowerCase() == category),
+                  )
+                  .toList();
     } else if (mode == 'color') {
-      filteredItems = selectedColor == null
-          ? clothingItems
-          : clothingItems
-              .where((item) => item.colorTag.value == selectedColor!.value)
-              .toList();
+      filteredItems =
+          selectedColor == null
+              ? data.clothingItems
+              : data.clothingItems
+                  .where((item) => item.colorTag.value == selectedColor!.value)
+                  .toList();
+    }
+
+    // Limit to 4 items if limit is set
+    if (limit != null && filteredItems.length > limit!) {
+      filteredItems = filteredItems.sublist(0, limit!);
     }
 
     if (filteredItems.isEmpty) {
       return const Padding(
         padding: EdgeInsets.all(12),
-        child: Center(child: Text("No matching outfits found.")),
-      );
-    }
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        GridView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: filteredItems.length,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 10,
-            childAspectRatio: 3 / 4,
-          ),
-          itemBuilder: (context, index) {
-            return ClothingItemCard(item: filteredItems[index]);
-          },
-        ),
-        const SizedBox(height: 12),
-        TextButton(
-          onPressed: () {
-            // Optional: Navigate to all outfits
-          },
-          child: const Text(
-            "View all",
+        child: Center(
+          child: Text(
+            "No matching outfits found.",
             style: TextStyle(
-              fontSize: 14,
-              color: Color(0xFF3949AB),
-              fontWeight: FontWeight.w500,
               fontFamily: 'Merienda One',
+              fontSize: 16,
+              color: Colors.grey,
             ),
           ),
         ),
-      ],
+      );
+    }
+
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: filteredItems.length,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2, // 2 columns
+        mainAxisSpacing: 10,
+        crossAxisSpacing: 10,
+        childAspectRatio: 3 / 4,
+      ),
+      itemBuilder: (context, index) {
+        final item = filteredItems[index];
+        return ClothingCard(
+          id: item.id,
+          name: item.name,
+          tag: item.tag,
+          image: item.image,
+        );
+      },
     );
   }
 }
