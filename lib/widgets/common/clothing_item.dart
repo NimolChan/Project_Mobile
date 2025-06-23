@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../utils/model.dart';
 
 class ClothesItem extends StatelessWidget {
   final int id;
@@ -13,6 +14,7 @@ class ClothesItem extends StatelessWidget {
   // final double height;
   final double width;
   final BoxFit? fit; 
+  final Color colorTag;
 
   const ClothesItem({
     super.key,
@@ -28,12 +30,29 @@ class ClothesItem extends StatelessWidget {
     // required this.height,
     required this.width,
     this.fit = BoxFit.cover,
+    required this.colorTag,
   });
 
+
+  // factory ClothingItem.fromMap(Map<String, dynamic> map) {
+  //   return ClothingItem(
+  //     id: map['id'],
+  //     name: map['name'],
+  //     color: map['color'],
+  //     colorTag: map['colorTag'],
+  //     size: map['size'],
+  //     location: List<String>.from(map['location']),
+  //     tag: List<String>.from(map['tag']),
+  //     type: map['type'],
+  //     price: (map['price'] as num).toDouble(),
+  //     image: map['image'],
+  //   );
+  // }
+  
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: width,
+      // width: width,
       // height: height,
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),

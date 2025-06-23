@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:stylishcloset/widgets/common/clothing_card.dart';
 import 'package:stylishcloset/widgets/common/navigation.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

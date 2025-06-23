@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stylishcloset/utils/constant.dart';
 // import 'package:stylishcloset/utils/data.dart';
-import 'package:stylishcloset/widgets/common/clothes_item.dart';
+import 'package:stylishcloset/widgets/common/clothing_item.dart';
 import 'package:stylishcloset/widgets/common/navigation.dart';
 
 class VisualizationScreen extends StatelessWidget {
@@ -54,8 +54,8 @@ class VisualizationScreen extends StatelessWidget {
                   children: [
                     ClothesItem(
                       width: 100,
-
-                      id: 2,
+                      
+                      id: 1,
                       name: "Classic White Tee",
                       color: "White",
                       size: "L",
@@ -64,6 +64,7 @@ class VisualizationScreen extends StatelessWidget {
                       type: "T-Shirt",
                       price: 19.99,
                       image: "assets/images/menBracelet.jpg",
+                      colorTag: Colors.blue,
                     ),
                     ClothesItem(
                       width: 100,
@@ -77,11 +78,12 @@ class VisualizationScreen extends StatelessWidget {
                       type: "T-Shirt",
                       price: 19.99,
                       image: "assets/images/menWatch.jpg",
+                      colorTag: Colors.blue,
                     ),
-                    ClothesItem(
+                  ClothesItem(
                       width: 100,
 
-                      id: 2,
+                      id: 3,
                       name: "Classic White Tee",
                       color: "White",
                       size: "L",
@@ -90,11 +92,12 @@ class VisualizationScreen extends StatelessWidget {
                       type: "T-Shirt",
                       price: 19.99,
                       image: "assets/images/menWatch2.jpg",
+                      colorTag: Colors.blue,
                     ),
                     ClothesItem(
                       width: 100,
 
-                      id: 2,
+                      id: 4,
                       name: "Classic White Tee",
                       color: "White",
                       size: "L",
@@ -103,6 +106,7 @@ class VisualizationScreen extends StatelessWidget {
                       type: "T-Shirt",
                       price: 19.99,
                       image: "assets/images/ring.jpg",
+                      colorTag: Colors.blue,
                     ),
                   ],
                 ),
@@ -112,7 +116,7 @@ class VisualizationScreen extends StatelessWidget {
                     ClothesItem(
                       width: 150,
 
-                      id: 2,
+                      id: 5,
                       name: "Classic White Tee",
                       color: "White",
                       size: "L",
@@ -121,11 +125,12 @@ class VisualizationScreen extends StatelessWidget {
                       type: "T-Shirt",
                       price: 19.99,
                       image: "assets/images/cardigan.jpg",
+                      colorTag: Colors.blue,
                     ),
                     ClothesItem(
                       width: 150,
 
-                      id: 2,
+                      id: 6,
                       name: "Classic White Tee",
                       color: "White",
                       size: "L",
@@ -134,6 +139,7 @@ class VisualizationScreen extends StatelessWidget {
                       type: "T-Shirt",
                       price: 19.99,
                       image: "assets/images/MenDressPants.jpg",
+                      colorTag: Colors.blue,
                     ),
                   ],
                 ),
@@ -143,7 +149,7 @@ class VisualizationScreen extends StatelessWidget {
                     ClothesItem(
                       width: 100,
 
-                      id: 2,
+                      id: 7,
                       name: "Classic White Tee",
                       color: "White",
                       size: "L",
@@ -152,11 +158,12 @@ class VisualizationScreen extends StatelessWidget {
                       type: "T-Shirt",
                       price: 19.99,
                       image: "assets/images/PrescriptionEyewear.jpg",
+                      colorTag: Colors.blue,
                     ),
                     ClothesItem(
                       width: 100,
 
-                      id: 2,
+                      id: 8,
                       name: "Classic White Tee",
                       color: "White",
                       size: "L",
@@ -165,11 +172,12 @@ class VisualizationScreen extends StatelessWidget {
                       type: "T-Shirt",
                       price: 19.99,
                       image: "assets/images/Eyeglasses.jpg",
+                      colorTag: Colors.blue,
                     ),
                     ClothesItem(
                       width: 100,
 
-                      id: 2,
+                      id: 9,
                       name: "Classic White Tee",
                       color: "White",
                       size: "L",
@@ -178,11 +186,12 @@ class VisualizationScreen extends StatelessWidget {
                       type: "T-Shirt",
                       price: 19.99,
                       image: "assets/images/MINIMALCHAINNECKLACE.jpg",
+                      colorTag: Colors.blue,
                     ),
                     ClothesItem(
                       width: 100,
 
-                      id: 2,
+                      id: 10,
                       name: "Classic White Tee",
                       color: "White",
                       size: "L",
@@ -191,6 +200,7 @@ class VisualizationScreen extends StatelessWidget {
                       type: "T-Shirt",
                       price: 19.99,
                       image: "assets/images/Eyeglasses.jpg",
+                      colorTag: Colors.blue,
                     ),
                   ],
                 ),
@@ -202,7 +212,7 @@ class VisualizationScreen extends StatelessWidget {
                 ClothesItem(
                   width: 100,
 
-                  id: 2,
+                  id:11,
                   name: "Classic White Tee",
                   color: "White",
                   size: "L",
@@ -211,11 +221,12 @@ class VisualizationScreen extends StatelessWidget {
                   type: "T-Shirt",
                   price: 19.99,
                   image: "assets/images/menClothe.jpg",
+                  colorTag: Colors.blue,
                 ),
                 ClothesItem(
                   width: 100,
 
-                  id: 2,
+                  id: 12,
                   name: "Classic White Tee",
                   color: "White",
                   size: "L",
@@ -224,11 +235,12 @@ class VisualizationScreen extends StatelessWidget {
                   type: "T-Shirt",
                   price: 19.99,
                   image: "assets/images/cardigan.jpg",
+                  colorTag: Colors.blue,
                 ),
                 ClothesItem(
                   width: 100,
 
-                  id: 2,
+                  id: 13,
                   name: "Classic White Tee",
                   color: "White",
                   size: "L",
@@ -237,6 +249,7 @@ class VisualizationScreen extends StatelessWidget {
                   type: "T-Shirt",
                   price: 19.99,
                   image: "assets/images/cardigan.jpg",
+                  colorTag: Colors.blue,
                 ),
               ],
             ),

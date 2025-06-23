@@ -111,31 +111,37 @@ class CustomBottomNav extends StatelessWidget {
         children: [
           _NavItem(
             label: 'Home',
+            icon: Icons.home,
             isActive: currentRoute == '/home',
             onTap: () => _navigateTo(context, '/home'),
           ),
           _NavItem(
             label: 'Collection',
+            icon: Icons.collections,
             isActive: currentRoute == '/collection',
             onTap: () => _navigateTo(context, '/collection'),
           ),
           _NavItem(
             label: 'Visualize',
+            icon: Icons.visibility,
             isActive: currentRoute == '/visualize',
             onTap: () => _navigateTo(context, '/visualize'),
           ),
           _NavItem(
             label: 'Personal',
+            icon: Icons.person,
             isActive: currentRoute == '/personal',
             onTap: () => _navigateTo(context, '/personal'),
           ),
           _NavItem(
             label: 'Settings',
+            icon: Icons.settings,
             isActive: currentRoute == '/settings',
             onTap: () => _navigateTo(context, '/settings'),
           ),
         ],
       ),
+      // (context, 0, Icons.home, "Home"),
     );
   }
 
@@ -150,11 +156,13 @@ class _NavItem extends StatelessWidget {
   final String label;
   final bool isActive;
   final VoidCallback onTap;
+  final IconData icon;
 
   const _NavItem({
     Key? key,
     required this.label,
     required this.isActive,
+     required this.icon,
     required this.onTap,
   }) : super(key: key);
 
@@ -177,6 +185,12 @@ class _NavItem extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+            Icon(
+            icon,
+            color: isActive ? AppColors.purple : Colors.grey,
+          ),
+          // Add a SizedBox for spacing between icon and text
+          const SizedBox(height: 4),
           Text(
             label,
             style: TextStyle(

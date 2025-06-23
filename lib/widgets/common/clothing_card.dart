@@ -5,7 +5,7 @@ class ClothingCard extends StatefulWidget {
   final String name;
   final List<String> tag;
   final String image;
-
+  
   const ClothingCard({
     super.key,
     required this.id,
