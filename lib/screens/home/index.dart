@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stylishcloset/widgets/common/clothing_card.dart';
 import 'package:stylishcloset/widgets/common/navigation.dart';
+import 'favorites.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -16,6 +17,22 @@ class _HomeScreenAppState extends State<HomeScreen> {
   List<String> filterColors = ['White', 'Black', 'Grey', 'Yellow', 'Pink', 'Purple', 'Blue', 'Red', 'Green', 'Brown'];
   String? selectedColor = 'White';
 
+  List<Map<String, dynamic>> favoriteItems = [];
+  void toggleFavorite(int id, String name, String image) {
+    setState(() {
+      final existingIndex = favoriteItems.indexWhere((item) => item['id'] == id);
+      if (existingIndex >= 0) {
+        favoriteItems.removeAt(existingIndex);
+      } else {
+        favoriteItems.add({
+          'id': id,
+          'name': name,
+          'image': image,
+          'tag': List<String>.from(['Shirt']),
+        });
+      }
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,9 +57,16 @@ class _HomeScreenAppState extends State<HomeScreen> {
             },
             icon: Icon(Icons.add_circle_outline_outlined),
           ),
+          
+          // favorite icon
           IconButton(
             onPressed: () {
-              
+              Navigator.push(
+                context, 
+                MaterialPageRoute(
+                  builder: (context) => FavoritesPage(favoriteItems: favoriteItems),
+                ),
+              );
             },
             icon: Icon(Icons.favorite_border_outlined),
           ),
@@ -69,6 +93,8 @@ class _HomeScreenAppState extends State<HomeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+
+            // when user clicked on the filter icon, this will show the filter
             if (showFilter)
               Container(
                 width: 430,
@@ -171,43 +197,48 @@ class _HomeScreenAppState extends State<HomeScreen> {
                 crossAxisSpacing: 30,
                 mainAxisSpacing: 50,
                 childAspectRatio: 0.75, // Adjust for your card's width/height ratio
-                children: const[
+                children: [
                   ClothingCard(
                     id: 1, 
                     name: "Shirt", 
                     tag: ["Shirt"], 
-                    image: 'assets/images/shirt1.png'
+                    image: 'assets/images/shirt1.png',
+                    isFavorite: favoriteItems.any((item) => item['id'] == 1),
+                    onFavoriteToggle: () => toggleFavorite(1, "Shirt", 'assets/images/shirt1.png'),
                   ),
                   ClothingCard(
                     id: 2, 
                     name: "Shirt", 
                     tag: ["Shirt"], 
-                    image: 'assets/images/shirt1.png'
+                    image: 'assets/images/shirt1.png',
+                    isFavorite: favoriteItems.any((item) => item['id'] == 2),
+                    onFavoriteToggle: () => toggleFavorite(2, "Shirt", 'assets/images/shirt1.png'),
                   ),
-                  ClothingCard(
-                    id: 1, 
-                    name: "Shirt", 
-                    tag: ["Shirt"], 
-                    image: 'assets/images/shirt1.png'
-                  ),
-                  ClothingCard(
-                    id: 1, 
-                    name: "Shirt", 
-                    tag: ["Shirt"], 
-                    image: 'assets/images/shirt1.png'
-                  ),
-                  ClothingCard(
-                    id: 1, 
-                    name: "Shirt", 
-                    tag: ["Shirt"], 
-                    image: 'assets/images/shirt1.png'
-                  ),
-                  ClothingCard(
-                    id: 1, 
-                    name: "Shirt", 
-                    tag: ["Shirt"], 
-                    image: 'assets/images/shirt1.png'
-                  ),
+                  
+                  // ClothingCard(
+                  //   id: 1, 
+                  //   name: "Shirt", 
+                  //   tag: ["Shirt"], 
+                  //   image: 'assets/images/shirt1.png'
+                  // ),
+                  // ClothingCard(
+                  //   id: 1, 
+                  //   name: "Shirt", 
+                  //   tag: ["Shirt"], 
+                  //   image: 'assets/images/shirt1.png'
+                  // ),
+                  // ClothingCard(
+                  //   id: 1, 
+                  //   name: "Shirt", 
+                  //   tag: ["Shirt"], 
+                  //   image: 'assets/images/shirt1.png'
+                  // ),
+                  // ClothingCard(
+                  //   id: 1, 
+                  //   name: "Shirt", 
+                  //   tag: ["Shirt"], 
+                  //   image: 'assets/images/shirt1.png'
+                  // ),
                 ],
               ),
               ),
