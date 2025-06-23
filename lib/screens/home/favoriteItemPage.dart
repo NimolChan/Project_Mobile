@@ -54,6 +54,9 @@ class FavoritesPage extends StatelessWidget {
                 return ClothingCard(
                   id: item['id'],
                   name: item['name'],
+                  color: item['color'],
+                  size: item['size'],
+                  location: List<String>.from(item['location'] ?? []),
                   tag: List<String>.from(item['tag'] ?? []),
                   image: item['image'],
                   isFavorite: true, // Always true in favorites page

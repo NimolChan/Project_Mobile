@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stylishcloset/widgets/common/clothing_card.dart';
 import 'package:stylishcloset/widgets/common/navigation.dart';
-import 'favorites.dart';
+import 'favoriteItemPage.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -201,6 +201,9 @@ class _HomeScreenAppState extends State<HomeScreen> {
                   ClothingCard(
                     id: 1, 
                     name: "Shirt", 
+                    color: "Grey",
+                    size: "M",
+                    location: ["Big Closet"],
                     tag: ["Shirt"], 
                     image: 'assets/images/shirt1.png',
                     isFavorite: favoriteItems.any((item) => item['id'] == 1),
@@ -209,6 +212,9 @@ class _HomeScreenAppState extends State<HomeScreen> {
                   ClothingCard(
                     id: 2, 
                     name: "Shirt", 
+                    color: "Grey",
+                    size: "M",
+                    location: ["Big Closet"],
                     tag: ["Shirt"], 
                     image: 'assets/images/shirt1.png',
                     isFavorite: favoriteItems.any((item) => item['id'] == 2),
