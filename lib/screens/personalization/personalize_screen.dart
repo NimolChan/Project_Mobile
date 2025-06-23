@@ -34,7 +34,7 @@ class _PersonalizationScreenState extends State<PersonalizationScreen> {
           children: [
             /// Centered title
             const Text(
-              'Personalize',
+              'Personalization',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,

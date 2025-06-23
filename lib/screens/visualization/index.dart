@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stylishcloset/utils/constant.dart';
+// import 'package:stylishcloset/utils/constant.dart';
 import 'package:stylishcloset/utils/data.dart';
 // import 'package:stylishcloset/widgets/common/clothes_item.dart';
 import 'package:stylishcloset/widgets/common/clothing_item.dart';
@@ -88,24 +88,48 @@ class _VisualizationScreenState extends State<VisualizationScreen> {
         automaticallyImplyLeading: false,
         centerTitle: true,
         elevation: 0,
-        backgroundColor: Colors.transparent,
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SizedBox(
-            width: 60,
-            height: 60,
-            child: ClipOval(
-              child: Image.asset('assets/images/logo.png', fit: BoxFit.cover),
+        toolbarHeight: 60,
+        backgroundColor: Colors.white,
+        //   leading: Padding(
+        //     padding: const EdgeInsets.all(8.0),
+        //         child: Image.asset(
+        //           'assets/images/logo.png',
+        //           width: 60,
+        //           height: 60,
+        //         ),
+        //   ),
+        //   title: Text(
+        //     'Visualization',
+        //     style: AppFonts.meriendaDisplayLarge.copyWith(
+        //       fontWeight: AppFonts.bold,
+        //     ),
+        //   ),
+        //   actions: [Container(width: 48)],
+        title: Stack(
+          alignment: Alignment.center,
+          children: [
+            /// Centered title
+            const Text(
+              'Visualization',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Merienda One',
+                color: Colors.black,
+              ),
             ),
-          ),
+
+            /// Left logo
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Image.asset(
+                'assets/images/logo.png',
+                width: 60,
+                height: 60,
+              ),
+            ),
+          ],
         ),
-        title: Text(
-          'Visualization',
-          style: AppFonts.meriendaDisplayLarge.copyWith(
-            fontWeight: AppFonts.bold,
-          ),
-        ),
-        actions: [Container(width: 48)],
       ),
       body: Center(
         child: SingleChildScrollView(
