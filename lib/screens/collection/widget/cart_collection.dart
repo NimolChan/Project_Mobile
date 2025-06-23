@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stylishcloset/screens/collection/collection_detail_page.dart';
 
 class CartCollection extends StatelessWidget {
   final String title;
@@ -25,90 +26,95 @@ class CartCollection extends StatelessWidget {
     }
 
     final screenWidth = MediaQuery.of(context).size.width;
-    final marginValue = screenWidth * 0.03; // 3% of screen width for a more spacious margin
-    final paddingValue = screenWidth * 0.02; // 2% padding inside the card
+    final marginValue = screenWidth * 0.03;
+    final paddingValue = screenWidth * 0.02;
 
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 12.0, horizontal: marginValue.clamp(12.0, 20.0)),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20.0), // Larger radius for elegance
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.4),
-            spreadRadius: 3,
-            blurRadius: 8,
-            offset: const Offset(0, 4),
-          ),
-        ],
-        gradient: LinearGradient(
-          colors: [
-            (backgroundColor ?? parsedColor).withOpacity(0.9),
-            (backgroundColor ?? parsedColor).withOpacity(0.7),
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-      ),
-      child: Row(
-        children: [
-          // Colored left section with title
-          Container(
-            width: 120, // Slightly wider for better balance
-            height: 140, // Increased height for a luxurious feel
-            padding: EdgeInsets.all(paddingValue.clamp(8.0, 16.0)),
-            decoration: BoxDecoration(
-              color: backgroundColor ?? parsedColor,
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(20.0),
-                bottomLeft: Radius.circular(20.0),
-              ),
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => CollectionDetailPage(title: title,)),
+        );
+      },
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 12.0, horizontal: marginValue.clamp(12.0, 20.0)),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.4),
+              spreadRadius: 3,
+              blurRadius: 8,
+              offset: const Offset(0, 4),
             ),
-            child: Center(
-              child: Text(
-                title,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
-                  color: useWhiteText(backgroundColor ?? parsedColor)
-                      ? Colors.white
-                      : Colors.black87,
-                  letterSpacing: 1.0,
-                  fontFamily: 'Roboto', // Optional: Use a stylish font
+          ],
+          gradient: LinearGradient(
+            colors: [
+              (backgroundColor ?? parsedColor).withOpacity(0.9),
+              (backgroundColor ?? parsedColor).withOpacity(0.7),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 120,
+              height: 140,
+              padding: EdgeInsets.all(paddingValue.clamp(8.0, 16.0)),
+              decoration: BoxDecoration(
+                color: backgroundColor ?? parsedColor,
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(20.0),
+                  bottomLeft: Radius.circular(20.0),
                 ),
               ),
-            ),
-          ),
-          // Image right section
-          Expanded(
-            child: ClipRRect(
-              borderRadius: const BorderRadius.only(
-                topRight: Radius.circular(20.0),
-                bottomRight: Radius.circular(20.0),
-              ),
-              child: Container(
-                height: 140,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(image),
-                    fit: BoxFit.cover,
-                    colorFilter: ColorFilter.mode(
-                      Colors.black.withOpacity(0.1),
-                      BlendMode.darken, // Subtle overlay for elegance
-                    ),
+              child: Center(
+                child: Text(
+                  title,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    color: useWhiteText(backgroundColor ?? parsedColor)
+                        ? Colors.white
+                        : Colors.black87,
+                    letterSpacing: 1.0,
                   ),
                 ),
-                child: const SizedBox.shrink(), // Placeholder to maintain height
               ),
             ),
-          ),
-        ],
+            Expanded(
+              child: ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  topRight: Radius.circular(20.0),
+                  bottomRight: Radius.circular(20.0),
+                ),
+                child: Container(
+                  height: 140,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(image),
+                      fit: BoxFit.cover,
+                      colorFilter: ColorFilter.mode(
+                        Colors.black.withOpacity(0.1),
+                        BlendMode.darken,
+                      ),
+                    ),
+                  ),
+                  child: const SizedBox.shrink(),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
   bool useWhiteText(Color color) {
     final brightness = (color.red * 0.299) + (color.green * 0.587) + (color.blue * 0.114);
-    return brightness < 150; // Adjusted threshold for better contrast
+    return brightness < 150;
   }
 }

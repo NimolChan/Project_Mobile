@@ -68,6 +68,50 @@ flutter:
     - assets/images/office.png
     - assets/images/relaxed.png
     - assets/images/wedding.png
+    - assets/images/LD1.png
+    - assets/images/LD2.png
+    - assets/images/LD3.png
+    - assets/images/LD4.png
+    - assets/images/LD5.png
+    - assets/images/LD6.png
+    - assets/images/LD7.png
+    - assets/images/LD8.png
+    - assets/images/LD9.png
+    - assets/images/OF1.png
+    - assets/images/OF2.png
+    - assets/images/OF3.png
+    - assets/images/OF4.png
+    - assets/images/OF5.png
+    - assets/images/OF6.png
+    - assets/images/OF7.png
+    - assets/images/OF8.png
+    - assets/images/OF9.png
+    - assets/images/OF10.png
+    - assets/images/OF11.png
+    - assets/images/OF12.png
+    - assets/images/OF13.png
+    - assets/images/RL1.png
+    - assets/images/RL2.png
+    - assets/images/RL3.png
+    - assets/images/RL4.png
+    - assets/images/RL5.png
+    - assets/images/RL6.png
+    - assets/images/RL7.png
+    - assets/images/RL8.png
+    - assets/images/RL9.png
+    - assets/images/PT1.png
+    - assets/images/PT2.png
+    - assets/images/PT3.png
+    - assets/images/PT4.png
+    - assets/images/PT5.png
+    - assets/images/PT6.png
+    - assets/images/PT7.png
+    - assets/images/PT8.png
+    - assets/images/PT9.png
+    - assets/images/PT10.png
+    - assets/images/PT11.png
+    - assets/images/PT12.png
+    - assets/images/PT13.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

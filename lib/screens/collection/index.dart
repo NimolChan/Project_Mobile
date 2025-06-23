@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stylishcloset/screens/collection/widget/cart_collection.dart';
+import 'package:stylishcloset/screens/collection/set_create_page.dart';
 import 'package:stylishcloset/widgets/common/navigation.dart';
 
 class SetScreen extends StatelessWidget {
@@ -42,56 +43,76 @@ class SetScreen extends StatelessWidget {
               child: Row(
                 children: [
                   Expanded(
-                    child: Container(
-                      height: 48,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFF0F2F5),
-                        borderRadius: BorderRadius.circular(24),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.1),
-                            blurRadius: 4,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SetCreatePage(),
                           ),
-                        ],
-                      ),
-                      child: const Row(
-                        children: [
-                          SizedBox(width: 16),
-                          Icon(Icons.search, color: Colors.grey, size: 22),
-                          SizedBox(width: 10),
-                          Text(
-                            'Search',
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 16,
+                        );
+                      },
+                      child: Container(
+                        height: 48,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFF0F2F5),
+                          borderRadius: BorderRadius.circular(24),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.1),
+                              blurRadius: 4,
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
+                        child: const Row(
+                          children: [
+                            SizedBox(width: 16),
+                            Icon(Icons.search, color: Colors.grey, size: 22),
+                            SizedBox(width: 10),
+                            Text(
+                              'Search',
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                   const SizedBox(width: 12),
-                  Container(
-                    height: 48,
-                    padding: const EdgeInsets.symmetric(horizontal: 22),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(color: Colors.grey.shade200),
-                      borderRadius: BorderRadius.circular(24),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.1),
-                          blurRadius: 4,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SetCreatePage(),
                         ),
-                      ],
-                    ),
-                    child: const Center(
-                      child: Text(
-                        'Create',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black87,
+                      );
+                    },
+                    child: Container(
+                      height: 48,
+                      padding: const EdgeInsets.symmetric(horizontal: 22),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.grey.shade200),
+                        borderRadius: BorderRadius.circular(24),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0x1),
+                            blurRadius: 4,
+                          ),
+                        ],
+                      ),
+                      child: const Center(
+                        child: Text(
+                          'Create',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black87,
+                          ),
                         ),
                       ),
                     ),
