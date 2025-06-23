@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../utils/model.dart';
+// import '../../utils/model.dart';
 
 class ClotheItem extends StatelessWidget {
   final Map<String, dynamic> item;

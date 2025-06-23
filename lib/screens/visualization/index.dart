@@ -3,7 +3,7 @@ import 'package:stylishcloset/utils/constant.dart';
 import 'package:stylishcloset/utils/data.dart';
 import 'package:stylishcloset/widgets/common/clothes_item.dart';
 // import 'package:stylishcloset/utils/data.dart';
-import 'package:stylishcloset/widgets/common/clothing_item.dart';
+// import 'package:stylishcloset/widgets/common/clothing_item.dart';
 import 'package:stylishcloset/widgets/common/navigation.dart';
 
 class VisualizationScreen extends StatefulWidget {

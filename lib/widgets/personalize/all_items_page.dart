@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../common/clothing_item.dart';
+// import '../common/clothing_item.dart';
 import '../../utils/data.dart' as data;
 import '../common/clothing_card.dart';
 import '../../utils/model.dart';

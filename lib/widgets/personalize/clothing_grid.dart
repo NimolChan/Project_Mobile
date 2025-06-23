@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import '../../../data/dummy_data.dart';
 import '../../utils/model.dart';
-import '../common/clothing_item.dart';
+// import '../common/clothing_item.dart';
 import '../common/clothing_card.dart';
 import '../../utils/data.dart'
     as data; // This should contain clothingItems list
