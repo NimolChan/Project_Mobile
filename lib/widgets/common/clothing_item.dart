@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 // import '../../utils/model.dart';
 
-class ClotheItem extends StatelessWidget {
+class ClothesItem extends StatelessWidget {
   final Map<String, dynamic> item;
   final double width;
   final BoxFit? fit;
-  final Color colorTag;
+  final Color? colorTag;
 
-  const ClotheItem({
+  const ClothesItem({
     super.key,
     required this.item,
     required this.width,
     this.fit = BoxFit.cover,
-    required this.colorTag,
+    this.colorTag,
   });
 
   // factory ClothingItem.fromMap(Map<String, dynamic> map) {
