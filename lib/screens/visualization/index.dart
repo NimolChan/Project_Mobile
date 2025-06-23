@@ -1,11 +1,84 @@
 import 'package:flutter/material.dart';
 import 'package:stylishcloset/utils/constant.dart';
-// import 'package:stylishcloset/utils/data.dart';
+import 'package:stylishcloset/utils/data.dart';
 import 'package:stylishcloset/widgets/common/clothes_item.dart';
 import 'package:stylishcloset/widgets/common/navigation.dart';
 
-class VisualizationScreen extends StatelessWidget {
+class VisualizationScreen extends StatefulWidget {
   const VisualizationScreen({Key? key}) : super(key: key);
+
+  @override
+  State<VisualizationScreen> createState() => _VisualizationScreenState();
+}
+
+class _VisualizationScreenState extends State<VisualizationScreen> {
+  int selectedIndex = 0; // Default to clothes[0]
+
+  void _showClothesPopup(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Container(
+            padding: const EdgeInsets.all(16),
+            height: MediaQuery.of(context).size.height * 0.7,
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'Clothes',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      icon: const Icon(Icons.close),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 16),
+                Expanded(
+                  child: GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 4,
+                          crossAxisSpacing: 8,
+                          mainAxisSpacing: 8,
+                          childAspectRatio: 1,
+                        ),
+                    itemCount: clothes.length,
+                    itemBuilder: (context, index) {
+                      final item = clothes[index];
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            selectedIndex = index;
+                          });
+                          Navigator.of(context).pop();
+                        },
+                        child: SizedBox(
+                          width: 70,
+                          height: 70,
+                          child: ClothesItem(item: item, width: 70),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,229 +91,124 @@ class VisualizationScreen extends StatelessWidget {
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
           child: SizedBox(
-            width:
-                60, // Or your preferred size (60 looks good for circular avatars)
-            height: 60, // Must match width to make a perfect circle
+            width: 60,
+            height: 60,
             child: ClipOval(
-              child: Image.asset(
-                'assets/images/logo.png',
-                fit: BoxFit.cover, // Changed to cover to fill the circle
-              ),
+              child: Image.asset('assets/images/logo.png', fit: BoxFit.cover),
             ),
           ),
         ),
         title: Text(
           'Visualization',
           style: AppFonts.meriendaDisplayLarge.copyWith(
-            fontWeight: AppFonts.bold, // Override weight if needed
+            fontWeight: AppFonts.bold,
           ),
         ),
-        actions: [
-          // Optional: Add invisible widget to balance the logo space
-          Container(width: 48), // Matches leading width
-        ],
+        actions: [Container(width: 48)],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          // crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // Data Visualization Section
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ClothesItem(
-                      width: 100,
-
-                      id: 2,
-                      name: "Classic White Tee",
-                      color: "White",
-                      size: "L",
-                      location: ["Los Angeles", "Store 1"],
-                      tag: ["casual", "summer"],
-                      type: "T-Shirt",
-                      price: 19.99,
-                      image: "assets/images/menBracelet.jpg",
-                    ),
-                    ClothesItem(
-                      width: 100,
-
-                      id: 2,
-                      name: "Classic White Tee",
-                      color: "White",
-                      size: "L",
-                      location: ["Los Angeles", "Store 1"],
-                      tag: ["casual", "summer"],
-                      type: "T-Shirt",
-                      price: 19.99,
-                      image: "assets/images/menWatch.jpg",
-                    ),
-                    ClothesItem(
-                      width: 100,
-
-                      id: 2,
-                      name: "Classic White Tee",
-                      color: "White",
-                      size: "L",
-                      location: ["Los Angeles", "Store 1"],
-                      tag: ["casual", "summer"],
-                      type: "T-Shirt",
-                      price: 19.99,
-                      image: "assets/images/menWatch2.jpg",
-                    ),
-                    ClothesItem(
-                      width: 100,
-
-                      id: 2,
-                      name: "Classic White Tee",
-                      color: "White",
-                      size: "L",
-                      location: ["Los Angeles", "Store 1"],
-                      tag: ["casual", "summer"],
-                      type: "T-Shirt",
-                      price: 19.99,
-                      image: "assets/images/ring.jpg",
-                    ),
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ClothesItem(
-                      width: 150,
-
-                      id: 2,
-                      name: "Classic White Tee",
-                      color: "White",
-                      size: "L",
-                      location: ["Los Angeles", "Store 1"],
-                      tag: ["casual", "summer"],
-                      type: "T-Shirt",
-                      price: 19.99,
-                      image: "assets/images/cardigan.jpg",
-                    ),
-                    ClothesItem(
-                      width: 150,
-
-                      id: 2,
-                      name: "Classic White Tee",
-                      color: "White",
-                      size: "L",
-                      location: ["Los Angeles", "Store 1"],
-                      tag: ["casual", "summer"],
-                      type: "T-Shirt",
-                      price: 19.99,
-                      image: "assets/images/MenDressPants.jpg",
-                    ),
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ClothesItem(
-                      width: 100,
-
-                      id: 2,
-                      name: "Classic White Tee",
-                      color: "White",
-                      size: "L",
-                      location: ["Los Angeles", "Store 1"],
-                      tag: ["casual", "summer"],
-                      type: "T-Shirt",
-                      price: 19.99,
-                      image: "assets/images/PrescriptionEyewear.jpg",
-                    ),
-                    ClothesItem(
-                      width: 100,
-
-                      id: 2,
-                      name: "Classic White Tee",
-                      color: "White",
-                      size: "L",
-                      location: ["Los Angeles", "Store 1"],
-                      tag: ["casual", "summer"],
-                      type: "T-Shirt",
-                      price: 19.99,
-                      image: "assets/images/Eyeglasses.jpg",
-                    ),
-                    ClothesItem(
-                      width: 100,
-
-                      id: 2,
-                      name: "Classic White Tee",
-                      color: "White",
-                      size: "L",
-                      location: ["Los Angeles", "Store 1"],
-                      tag: ["casual", "summer"],
-                      type: "T-Shirt",
-                      price: 19.99,
-                      image: "assets/images/MINIMALCHAINNECKLACE.jpg",
-                    ),
-                    ClothesItem(
-                      width: 100,
-
-                      id: 2,
-                      name: "Classic White Tee",
-                      color: "White",
-                      size: "L",
-                      location: ["Los Angeles", "Store 1"],
-                      tag: ["casual", "summer"],
-                      type: "T-Shirt",
-                      price: 19.99,
-                      image: "assets/images/Eyeglasses.jpg",
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ClothesItem(
-                  width: 100,
-
-                  id: 2,
-                  name: "Classic White Tee",
-                  color: "White",
-                  size: "L",
-                  location: ["Los Angeles", "Store 1"],
-                  tag: ["casual", "summer"],
-                  type: "T-Shirt",
-                  price: 19.99,
-                  image: "assets/images/menClothe.jpg",
-                ),
-                ClothesItem(
-                  width: 100,
-
-                  id: 2,
-                  name: "Classic White Tee",
-                  color: "White",
-                  size: "L",
-                  location: ["Los Angeles", "Store 1"],
-                  tag: ["casual", "summer"],
-                  type: "T-Shirt",
-                  price: 19.99,
-                  image: "assets/images/cardigan.jpg",
-                ),
-                ClothesItem(
-                  width: 100,
-
-                  id: 2,
-                  name: "Classic White Tee",
-                  color: "White",
-                  size: "L",
-                  location: ["Los Angeles", "Store 1"],
-                  tag: ["casual", "summer"],
-                  type: "T-Shirt",
-                  price: 19.99,
-                  image: "assets/images/cardigan.jpg",
-                ),
-              ],
-            ),
-          ],
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        width: 100,
+                        height: 100,
+                        child: ClothesItem(item: clothes[23], width: 100),
+                      ),
+                      SizedBox(
+                        width: 100,
+                        height: 100,
+                        child: ClothesItem(item: clothes[12], width: 100),
+                      ),
+                      SizedBox(
+                        width: 100,
+                        height: 100,
+                        child: ClothesItem(item: clothes[13], width: 100),
+                      ),
+                      SizedBox(
+                        width: 100,
+                        height: 100,
+                        child: ClothesItem(item: clothes[21], width: 100),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      GestureDetector(
+                        onTap: () => _showClothesPopup(context),
+                        child: SizedBox(
+                          width: 150,
+                          height: 200,
+                          child: ClothesItem(item: clothes[selectedIndex], width: 150),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 150,
+                        height: 200,
+                        child: ClothesItem(item: clothes[1], width: 150),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        width: 100,
+                        height: 100,
+                        child: ClothesItem(item: clothes[6], width: 100),
+                      ),
+                      SizedBox(
+                        width: 100,
+                        height: 100,
+                        child: ClothesItem(item: clothes[7], width: 100),
+                      ),
+                      SizedBox(
+                        width: 100,
+                        height: 100,
+                        child: ClothesItem(item: clothes[8], width: 100),
+                      ),
+                      SizedBox(
+                        width: 100,
+                        height: 100,
+                        child: ClothesItem(item: clothes[9], width: 100),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  SizedBox(
+                    width: 100,
+                    height: 100,
+                    child: ClothesItem(item: clothes[20], width: 100),
+                  ),
+                  SizedBox(
+                    width: 100,
+                    height: 100,
+                    child: ClothesItem(item: clothes[24], width: 100),
+                  ),
+                  SizedBox(
+                    width: 100,
+                    height: 100,
+                    child: ClothesItem(item: clothes[22], width: 100),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: CustomBottomNav(currentRoute: '/visualize'),

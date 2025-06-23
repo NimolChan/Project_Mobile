@@ -8,8 +8,8 @@ final List<Map<String, dynamic>> clothes = [
     "tag": ["winter", "outdoor"],
     "type": "Jacket",
     "price": 89.99,
-    "image": "https://example.com/images/jacket_bloom.jpg"
-    // "image": "assets/images/cotton_tshirt.jpg"
+    // "image": "https://example.com/images/jacket_bloom.jpg"
+    "image": "assets/images/c1.png"
   },
   {
     "id": 2,
@@ -20,7 +20,7 @@ final List<Map<String, dynamic>> clothes = [
     "tag": ["casual", "summer"],
     "type": "T-Shirt",
     "price": 19.99,
-    "image": "https://example.com/images/white_tee.jpg"
+    "image": "assets/images/c2.png"
   },
   {
     "id": 3,
@@ -31,7 +31,7 @@ final List<Map<String, dynamic>> clothes = [
     "tag": ["denim", "casual"],
     "type": "Jeans",
     "price": 59.50,
-    "image": "https://example.com/images/denim_jeans.jpg"
+    "image": "assets/images/c3.png"
   },
   {
     "id": 4,
@@ -42,7 +42,7 @@ final List<Map<String, dynamic>> clothes = [
     "tag": ["gym", "sport"],
     "type": "Shorts",
     "price": 29.99,
-    "image": "https://example.com/images/athletic_shorts.jpg"
+    "image": "assets/images/c4.png"
   },
   {
     "id": 5,
@@ -53,7 +53,7 @@ final List<Map<String, dynamic>> clothes = [
     "tag": ["hoodie", "fall"],
     "type": "Hoodie",
     "price": 49.99,
-    "image": "https://example.com/images/hoodie_comfort.jpg"
+    "image": "assets/images/c5.png"
   },
   {
     "id": 6,
@@ -64,7 +64,7 @@ final List<Map<String, dynamic>> clothes = [
     "tag": ["dress", "summer"],
     "type": "Dress",
     "price": 69.95,
-    "image": "https://example.com/images/summer_dress.jpg"
+    "image": "assets/images/cardigan.jpg"
   },
   {
     "id": 7,
@@ -75,7 +75,7 @@ final List<Map<String, dynamic>> clothes = [
     "tag": ["smart casual", "polo"],
     "type": "Shirt",
     "price": 34.99,
-    "image": "https://example.com/images/polo_shirt.jpg"
+    "image": "assets/images/eyeglasses.jpg"
   },
   {
     "id": 8,
@@ -86,7 +86,7 @@ final List<Map<String, dynamic>> clothes = [
     "tag": ["leather", "biker"],
     "type": "Jacket",
     "price": 129.99,
-    "image": "https://example.com/images/leather_jacket.jpg"
+    "image": "assets/images/menBracelet.jpg"
   },
   {
     "id": 9,
@@ -97,7 +97,7 @@ final List<Map<String, dynamic>> clothes = [
     "tag": ["utility", "outdoor"],
     "type": "Pants",
     "price": 44.95,
-    "image": "https://example.com/images/cargo_pants.jpg"
+    "image": "assets/images/menWatch.jpg"
   },
   {
     "id": 10,
@@ -108,7 +108,7 @@ final List<Map<String, dynamic>> clothes = [
     "tag": ["formal", "blouse"],
     "type": "Blouse",
     "price": 79.99,
-    "image": "https://example.com/images/silk_blouse.jpg"
+    "image": "assets/images/menClothe.jpg"
   },
   {
     "id": 11,
@@ -119,7 +119,7 @@ final List<Map<String, dynamic>> clothes = [
     "tag": ["graphic", "casual"],
     "type": "T-Shirt",
     "price": 24.99,
-    "image": "https://example.com/images/graphic_tee.jpg"
+    "image": "assets/images/MenDressPants.jpg"
   },
   {
     "id": 12,
@@ -130,7 +130,7 @@ final List<Map<String, dynamic>> clothes = [
     "tag": ["yoga", "stretch"],
     "type": "Pants",
     "price": 39.99,
-    "image": "https://example.com/images/yoga_pants.jpg"
+    "image": "assets/images/menWatch2.jpg"
   },
   {
     "id": 13,
@@ -141,7 +141,7 @@ final List<Map<String, dynamic>> clothes = [
     "tag": ["fleece", "layer"],
     "type": "Vest",
     "price": 54.99,
-    "image": "https://example.com/images/fleece_vest.jpg"
+    "image": "assets/images/ring.jpg"
   },
   {
     "id": 14,
@@ -152,7 +152,7 @@ final List<Map<String, dynamic>> clothes = [
     "tag": ["office", "formal"],
     "type": "Trousers",
     "price": 64.99,
-    "image": "https://example.com/images/formal_trousers.jpg"
+    "image": "assets/images/ring2.jpg"
   },
   {
     "id": 15,
@@ -163,7 +163,7 @@ final List<Map<String, dynamic>> clothes = [
     "tag": ["rain", "spring"],
     "type": "Coat",
     "price": 74.95,
-    "image": "https://example.com/images/raincoat_light.jpg"
+    "image": "assets/images/minimalchainnecklace.jpg"
   },
   {
     "id": 16,
@@ -174,7 +174,7 @@ final List<Map<String, dynamic>> clothes = [
     "tag": ["knit", "casual"],
     "type": "Sweater",
     "price": 44.99,
-    "image": "https://example.com/images/striped_sweater.jpg"
+    "image": "assets/images/prescriptioneyewear.jpg"
   },
   {
     "id": 17,
@@ -185,7 +185,7 @@ final List<Map<String, dynamic>> clothes = [
     "tag": ["linen", "summer"],
     "type": "Shirt",
     "price": 52.99,
-    "image": "https://example.com/images/linen_shirt.jpg"
+    "image": "assets/images/mentshirt1.jpg"
   },
   {
     "id": 18,
@@ -196,7 +196,7 @@ final List<Map<String, dynamic>> clothes = [
     "tag": ["winter", "puffer"],
     "type": "Jacket",
     "price": 99.95,
-    "image": "https://example.com/images/puffer_jacket.jpg"
+    "image": "assets/images/ring2.jpg"
   },
   {
     "id": 19,
@@ -207,7 +207,7 @@ final List<Map<String, dynamic>> clothes = [
     "tag": ["run", "sport"],
     "type": "Tights",
     "price": 34.50,
-    "image": "https://example.com/images/running_tights.jpg"
+    "image": "assets/images/ring.jpg"
   },
   {
     "id": 20,
@@ -218,6 +218,61 @@ final List<Map<String, dynamic>> clothes = [
     "tag": ["wool", "formal"],
     "type": "Coat",
     "price": 149.99,
-    "image": "https://example.com/images/wool_coat.jpg"
+    "image": "assets/images/ring2.jpg"
+  },
+  {
+    "id": 21,
+    "name": "Knit Sweater",
+    "color": "Cream",
+    "size": "L",
+    "location": "Winter storage box",
+    "tag": ["knit", "cozy"],
+    "type": "Sweater",
+    "price": 65.99,
+    "image": "assets/images/menBag1.jpg"
+  },
+  {
+    "id": 22,
+    "name": "Swim Trunks",
+    "color": "Navy Blue",
+    "size": "M",
+    "location": "Beach bag",
+    "tag": ["swim", "summer"],
+    "type": "Shorts",
+    "price": 35.50,
+    "image": "assets/images/menEarrings2.jpg"
+  },
+  {
+    "id": 23,
+    "name": "Flannel Shirt",
+    "color": "Red/Black Check",
+    "size": "XL",
+    "location": "Cabin wardrobe",
+    "tag": ["flannel", "casual"],
+    "type": "Shirt",
+    "price": 42.75,
+    "image": "assets/images/menSneaker1.jpg"
+  },
+  {
+    "id": 24,
+    "name": "Silk Scarf",
+    "color": "Emerald Green",
+    "size": "One Size",
+    "location": "Accessory drawer",
+    "tag": ["accessory", "formal"],
+    "type": "Scarf",
+    "price": 28.99,
+    "image": "assets/images/menscarf1.jpg"
+  },
+  {
+    "id": 25,
+    "name": "Baseball Cap",
+    "color": "Black",
+    "size": "Adjustable",
+    "location": "Car glove compartment",
+    "tag": ["cap", "casual"],
+    "type": "Hat",
+    "price": 22.50,
+    "image": "assets/images/menBelt1.jpg"
   }
 ];
