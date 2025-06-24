@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:file_picker/file_picker.dart';
+import 'dart:io';
+import 'package:stylishcloset/utils/model.dart';
 
 class SetCreatePage extends StatefulWidget {
   const SetCreatePage({super.key});
@@ -8,125 +11,171 @@ class SetCreatePage extends StatefulWidget {
 }
 
 class _SetCreatePageState extends State<SetCreatePage> {
-  final TextEditingController _nameController = TextEditingController();
-  final List<String> _items = []; // Placeholder for item image paths
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController sizeController = TextEditingController();
 
-  @override
-  void dispose() {
-    _nameController.dispose();
-    super.dispose();
+  String? selectedColor;
+  String? selectedTag;
+  File? imageFile;
+
+  final List<String> colors = ['Pink', 'Blue', 'Black', 'White'];
+  final List<String> tags = ['Wedding', 'Office', 'Party', 'Relax'];
+
+  Future<void> pickImage() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.image,
+    );
+    if (result != null && result.files.single.path != null) {
+      setState(() {
+        imageFile = File(result.files.single.path!);
+      });
+    }
   }
 
-  void _addItem() {
+  void resetForm() {
+    nameController.clear();
+    sizeController.clear();
     setState(() {
-      _items.add('assets/images/new_item.png'); // Placeholder, replace with actual image selection logic
+      selectedColor = null;
+      selectedTag = null;
+      imageFile = null;
     });
   }
 
-  void _saveSet() {
-    if (_nameController.text.isNotEmpty && _items.isNotEmpty) {
-      // Add save logic here (e.g., save to a database or pass to another page)
+  void createSet() {
+    if (nameController.text.isEmpty ||
+        sizeController.text.isEmpty ||
+        selectedColor == null ||
+        selectedTag == null ||
+        imageFile == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Set saved successfully!')),
+        const SnackBar(content: Text('Please complete all fields.')),
       );
-      _nameController.clear();
-      setState(() {
-        _items.clear();
-      });
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please enter a name and add items.')),
-      );
+      return;
     }
+
+    userCreatedItems.add(CollectionItem(
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
+      imagePath: imageFile!.path,
+      isFileImage: true,
+      tag: selectedTag!,
+    ));
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Set Created Successfully!')),
+    );
+    resetForm();
+  }
+
+  Widget _buildCollectionItemCard(CollectionItem item) {
+    return Card(
+      child: item.isFileImage
+          ? Image.file(File(item.imagePath), height: 100)
+          : Image.asset(item.imagePath, height: 100),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[50],
+      backgroundColor: const Color(0xFFE6F0F2),
       appBar: AppBar(
-        title: const Text(
-          'Create New Set',
-          style: TextStyle(
-            fontSize: 26,
-            fontWeight: FontWeight.w600,
-            color: Colors.black87,
-          ),
-        ),
+        title: const Text('Create Set'),
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Set Name',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-                color: Colors.black87,
-              ),
-            ),
-            const SizedBox(height: 8),
-            TextField(
-              controller: _nameController,
-              decoration: InputDecoration(
-                hintText: 'Enter set name (e.g., Casual)',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
+      body: SafeArea(
+        child: Center(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              children: [
+                const Icon(Icons.local_offer_outlined, size: 50),
+                const SizedBox(height: 10),
+                const Text('Set', style: TextStyle(fontSize: 26, fontWeight: FontWeight.w500)),
+                const SizedBox(height: 20),
+                const Text('Create', style: TextStyle(fontSize: 20)),
+                const SizedBox(height: 30),
+
+                TextField(
+                  controller: nameController,
+                  decoration: InputDecoration(
+                    labelText: 'Name',
+                    hintText: 'T-shirt...',
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
+                  ),
                 ),
-              ),
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: _addItem,
-              child: const Text('Add Item'),
-            ),
-            const SizedBox(height: 16),
-            Text(
-              'Preview Items',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-                color: Colors.black87,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Expanded(
-              child: _items.isEmpty
-                  ? const Center(child: Text('No items added yet'))
-                  : GridView.builder(
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 12,
-                        mainAxisSpacing: 12,
-                        childAspectRatio: 0.75,
-                      ),
-                      itemCount: _items.length,
-                      itemBuilder: (context, index) {
-                        return Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            image: DecorationImage(
-                              image: AssetImage(_items[index]),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        );
+                const SizedBox(height: 15),
+
+                DropdownButtonFormField<String>(
+                  decoration: InputDecoration(
+                    labelText: 'Color',
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
+                  ),
+                  value: selectedColor,
+                  items: colors.map((color) => DropdownMenuItem(value: color, child: Text(color))).toList(),
+                  onChanged: (value) => setState(() => selectedColor = value),
+                ),
+                const SizedBox(height: 15),
+
+                DropdownButtonFormField<String>(
+                  decoration: InputDecoration(
+                    labelText: 'Tag',
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
+                  ),
+                  value: selectedTag,
+                  items: tags.map((tag) => DropdownMenuItem(value: tag, child: Text(tag))).toList(),
+                  onChanged: (value) => setState(() => selectedTag = value),
+                ),
+                const SizedBox(height: 15),
+
+                TextField(
+                  controller: sizeController,
+                  decoration: InputDecoration(
+                    labelText: 'Input Size',
+                    hintText: 'size L',
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
+                  ),
+                ),
+                const SizedBox(height: 15),
+
+                ElevatedButton.icon(
+                  onPressed: pickImage,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blueGrey[300],
+                    padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+                  ),
+                  icon: const Icon(Icons.image),
+                  label: const Text("Input Image"),
+                ),
+                if (imageFile != null) ...[
+                  const SizedBox(height: 10),
+                  Image.file(imageFile!, height: 100),
+                ],
+
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    OutlinedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
                       },
+                      child: const Text('Cancel'),
                     ),
+                    ElevatedButton(
+                      onPressed: createSet,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.purpleAccent,
+                      ),
+                      child: const Text('Create'),
+                    ),
+                  ],
+                )
+              ],
             ),
-            const SizedBox(height: 16),
-            Center(
-              child: ElevatedButton(
-                onPressed: _saveSet,
-                child: const Text('Save Set'),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

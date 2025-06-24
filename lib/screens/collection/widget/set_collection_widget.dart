@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:stylishcloset/utils/model.dart';
+import 'dart:io';
 
 class SetCollectionWidget extends StatefulWidget {
   final String collectionTitle;
@@ -115,20 +117,35 @@ class _SetCollectionWidgetState extends State<SetCollectionWidget> {
         Expanded(
           child: ClipRRect(
             borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
-            child: Image.asset(
-              item.imagePath,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return Container(
-                  color: Colors.grey[200],
-                  child: const Icon(
-                    Icons.image_not_supported,
-                    color: Colors.grey,
-                    size: 40,
+            child: item.isFileImage
+                ? Image.file(
+                    File(item.imagePath),
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Container(
+                        color: Colors.grey[200],
+                        child: const Icon(
+                          Icons.image_not_supported,
+                          color: Colors.grey,
+                          size: 40,
+                        ),
+                      );
+                    },
+                  )
+                : Image.asset(
+                    item.imagePath,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Container(
+                        color: Colors.grey[200],
+                        child: const Icon(
+                          Icons.image_not_supported,
+                          color: Colors.grey,
+                          size: 40,
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
-            ),
           ),
         ),
         const SizedBox(height: 8),
@@ -164,15 +181,4 @@ class _SetCollectionWidgetState extends State<SetCollectionWidget> {
       ],
     );
   }
-}
-
-// Model class for collection items
-class CollectionItem {
-  final String id;
-  final String imagePath;
-
-  CollectionItem({
-    required this.id,
-    required this.imagePath,
-  });
 }

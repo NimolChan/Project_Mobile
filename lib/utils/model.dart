@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stylishcloset/utils/data.dart';
+// import 'package:flutter/foundation.dart' show kIsWeb;
+import 'dart:typed_data';
 
 class ClothingItem {
   final int id;
@@ -53,3 +55,22 @@ final List<ClothingItem> clothingItems =
         .where((item) => item.containsKey('tag')) // optional, but helps
         .map((item) => ClothingItem.fromMap(item))
         .toList();
+
+class CollectionItem {
+  final String id;
+  final String imagePath;
+  final bool isFileImage;
+  final String tag;
+  final Uint8List? imageBytes;
+
+  CollectionItem({
+    required this.id,
+    required this.imagePath,
+    this.isFileImage = false,
+    required this.tag,
+    this.imageBytes,
+  });
+}
+
+// Global list for user-created items
+List<CollectionItem> userCreatedItems = [];

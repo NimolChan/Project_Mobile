@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stylishcloset/screens/collection/widget/cart_collection.dart';
-import 'package:stylishcloset/screens/collection/set_create_page.dart';
+import 'package:stylishcloset/screens/collection/set_create_page.dart' as set_create;
 import 'package:stylishcloset/widgets/common/navigation.dart';
 
 class CollectionScreen extends StatelessWidget {
@@ -58,7 +58,7 @@ class CollectionScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const SetCreatePage(),
+                            builder: (context) => const set_create.SetCreatePage(),
                           ),
                         );
                       },
@@ -97,7 +97,7 @@ class CollectionScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const SetCreatePage(),
+                          builder: (context) => const set_create.SetCreatePage(),
                         ),
                       );
                     },
@@ -167,7 +167,7 @@ class CollectionScreen extends StatelessWidget {
                       ), // Soft greyish-brown
                     ),
                     CartCollection(
-                      title: 'Relaxed',
+                      title: 'Relax',
                       image: 'assets/images/relaxed.png',
                       color: '0xFFD4C4A8',
                       backgroundColor: const Color(
@@ -181,7 +181,7 @@ class CollectionScreen extends StatelessWidget {
                       backgroundColor: const Color(0xFFC8B8A8), // Warm taupe
                     ),
                     CartCollection(
-                      title: 'Patty',
+                      title: 'Party',
                       image: 'assets/images/party.png',
                       color: '0xFFB8A0A0',
                       backgroundColor: const Color(
