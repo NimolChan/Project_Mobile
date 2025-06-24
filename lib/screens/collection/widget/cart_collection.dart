@@ -1,62 +1,109 @@
 import 'package:flutter/material.dart';
+import 'package:stylishcloset/screens/collection/collection_detail_page.dart';
 
 class CartCollection extends StatelessWidget {
   final String title;
   final String image;
-  final String color; // Expect hex color like '0xFF8B7C7A'
+  final String color;
+  final Color? backgroundColor;
 
   const CartCollection({
     super.key,
     required this.title,
     required this.image,
     required this.color,
+    this.backgroundColor,
   });
 
   @override
   Widget build(BuildContext context) {
-    final sizeHeight = MediaQuery.of(context).size.height;
+    Color parsedColor;
+    try {
+      parsedColor = Color(int.parse(color.replaceFirst('0xFF', '0xFF'), radix: 16));
+    } catch (e) {
+      parsedColor = Colors.grey;
+      print('Error parsing color $color: $e');
+    }
 
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-      height: sizeHeight * 0.15, // responsive height
-      child: Card(
-        elevation: 4,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
+    final screenWidth = MediaQuery.of(context).size.width;
+    final marginValue = screenWidth * 0.03;
+    final paddingValue = screenWidth * 0.02;
+
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => CollectionDetailPage(title: title,)),
+        );
+      },
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 12.0, horizontal: marginValue.clamp(12.0, 20.0)),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.4),
+              spreadRadius: 3,
+              blurRadius: 8,
+              offset: const Offset(0, 4),
+            ),
+          ],
+          gradient: LinearGradient(
+            colors: [
+              (backgroundColor ?? parsedColor).withOpacity(0.9),
+              (backgroundColor ?? parsedColor).withOpacity(0.7),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
         ),
-        color: _parseColor(color),
         child: Row(
           children: [
-            // Text section
-            Expanded(
-              flex: 2,
+            Container(
+              width: 120,
+              height: 140,
+              padding: EdgeInsets.all(paddingValue.clamp(8.0, 16.0)),
+              decoration: BoxDecoration(
+                color: backgroundColor ?? parsedColor,
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(20.0),
+                  bottomLeft: Radius.circular(20.0),
+                ),
+              ),
               child: Center(
                 child: Text(
                   title,
-                  style: const TextStyle(
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
                     fontSize: 20,
-                    color: Colors.white,
-                    fontFamily: 'Cursive',
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w600,
+                    color: useWhiteText(backgroundColor ?? parsedColor)
+                        ? Colors.white
+                        : Colors.black87,
+                    letterSpacing: 1.0,
                   ),
                 ),
               ),
             ),
-            // Image section
             Expanded(
-              flex: 3,
               child: ClipRRect(
                 borderRadius: const BorderRadius.only(
-                  topRight: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
+                  topRight: Radius.circular(20.0),
+                  bottomRight: Radius.circular(20.0),
                 ),
                 child: Container(
-                  alignment: Alignment.center,
-                  child: Image.asset(
-                    image,
-                    fit: BoxFit.contain, // keep image centered and visible
-                    height: double.infinity, // responsive width
+                  height: 140,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(image),
+                      fit: BoxFit.cover,
+                      colorFilter: ColorFilter.mode(
+                        Colors.black.withOpacity(0.1),
+                        BlendMode.darken,
+                      ),
+                    ),
                   ),
+                  child: const SizedBox.shrink(),
                 ),
               ),
             ),
@@ -66,12 +113,8 @@ class CartCollection extends StatelessWidget {
     );
   }
 
-  /// Parses a hex color string like '0xFF8B7C7A' to a Color object.
-  Color _parseColor(String hex) {
-    try {
-      return Color(int.parse(hex));
-    } catch (_) {
-      return Colors.grey; // Fallback color on error
-    }
+  bool useWhiteText(Color color) {
+    final brightness = (color.red * 0.299) + (color.green * 0.587) + (color.blue * 0.114);
+    return brightness < 150;
   }
 }

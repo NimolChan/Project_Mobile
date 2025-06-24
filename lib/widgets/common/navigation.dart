@@ -117,13 +117,13 @@ class CustomBottomNav extends StatelessWidget {
           ),
           _NavItem(
             label: 'Collection',
-            icon: Icons.collections,
+            icon: Icons.view_list_rounded,
             isActive: currentRoute == '/collection',
             onTap: () => _navigateTo(context, '/collection'),
           ),
           _NavItem(
             label: 'Visualize',
-            icon: Icons.visibility,
+            icon: Icons.auto_awesome,
             isActive: currentRoute == '/visualize',
             onTap: () => _navigateTo(context, '/visualize'),
           ),
@@ -162,7 +162,7 @@ class _NavItem extends StatelessWidget {
     Key? key,
     required this.label,
     required this.isActive,
-     required this.icon,
+    required this.icon,
     required this.onTap,
   }) : super(key: key);
 
@@ -173,7 +173,7 @@ class _NavItem extends StatelessWidget {
       text: TextSpan(
         text: label,
         style: TextStyle(
-          fontSize: 16.0,
+          fontSize: 12.0,
           fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
         ),
       ),
@@ -194,8 +194,9 @@ class _NavItem extends StatelessWidget {
           Text(
             label,
             style: TextStyle(
-              fontSize: 16.0,
+              fontSize: 12.0,
               fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
+              fontFamily: "Poppins",
               color: isActive ? AppColors.purple : AppColors.grey,
             ),
           ),
