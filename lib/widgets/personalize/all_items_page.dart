@@ -56,8 +56,15 @@ class AllItemsPage extends StatelessWidget {
           return ClothingCard(
             id: item.id,
             name: item.name,
+            color: item.color, // Add this
+            size: item.size, // Add this
+            location: item.location, // Add this
             tag: item.tag,
             image: item.image,
+            isFavorite: false, // Add this
+            onFavoriteToggle: () {
+              // item.isFavorite = !item.isFavorite;
+            },
           );
         },
       ),
