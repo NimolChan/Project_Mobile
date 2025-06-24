@@ -16,7 +16,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFC064F1)),
       ),
-      initialRoute: '/auth', // This will now load the loginPage first
+      initialRoute: '/settings',
+      // initialRoute: '/auth', // This will now load the loginPage first
       onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
