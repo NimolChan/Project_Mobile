@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:stylishcloset/screens/authentication/index.dart';
+import 'package:stylishcloset/screens/authentication/signup_screen.dart';
+// import 'package:stylishcloset/screens/authentication/index.dart';
+// import 'package:stylishcloset/screens/authentication/login_screen.dart';
 import 'package:stylishcloset/screens/collection/index.dart';
 import 'package:stylishcloset/screens/home/index.dart';
 import 'package:stylishcloset/screens/personalization/personalize_screen.dart';
@@ -8,31 +10,38 @@ import 'package:stylishcloset/screens/visualization/index.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    // Just print settings.name; that’s the route you asked for.
-    debugPrint("generateRoute was called with name = ${settings.name}");
-
+    Widget page;
     switch (settings.name) {
       case '/auth':
-        return MaterialPageRoute(builder: (_) => AuthenticationScreen());
+        page = SignUpScreen();
+        break;
+
       case '/home':
-        return MaterialPageRoute(builder: (_) => HomeScreen());
+        page = HomeScreen();
+        break;
       case '/collection':
-        return MaterialPageRoute(builder: (_) => CollectionScreen());
+        page = CollectionScreen();
+        break;
       case '/visualize':
-        return MaterialPageRoute(builder: (_) => VisualizationScreen());
+        page = VisualizationScreen();
+        break;
       case '/personal':
-        return MaterialPageRoute(builder: (_) => PersonalizationScreen());
+        page = PersonalizationScreen();
+        break;
       case '/settings':
-        return MaterialPageRoute(builder: (_) => SettingsScreen());
+        page = SettingsScreen();
+        break;
       default:
-        return MaterialPageRoute(
-          builder:
-              (_) => Scaffold(
-                body: Center(
-                  child: Text('No route defined for ${settings.name}'),
-                ),
-              ),
+        page = Scaffold(
+          body: Center(child: Text('No route defined for ${settings.name}')),
         );
     }
+    return PageRouteBuilder(
+      pageBuilder: (_, __, ___) => page,
+      transitionsBuilder:
+          (_, animation, __, child) =>
+              FadeTransition(opacity: animation, child: child),
+      transitionDuration: const Duration(milliseconds: 300),
+    );
   }
 }

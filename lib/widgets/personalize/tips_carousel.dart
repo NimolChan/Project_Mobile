@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../data/dummy_data.dart';
+import '../../utils/data.dart' as data;
 
 class TipsCarousel extends StatelessWidget {
   const TipsCarousel({super.key});
@@ -14,13 +14,34 @@ class TipsCarousel extends StatelessWidget {
           height: 110,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
-            itemCount: tips.length,
+            itemCount: data.tips.length,
             separatorBuilder: (_, __) => const SizedBox(width: 14),
             itemBuilder: (context, index) {
-              final tip = tips[index];
-              return ClipRRect(
-                borderRadius: BorderRadius.circular(16),
-                child: Stack(
+              final tip = data.tips[index];
+              return GestureDetector(
+                onTap: () {
+                  // Show popup when tapped
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text(tip['title'] ?? 'Tip'),
+                        content: SingleChildScrollView(
+                          child: Text(tip['description'] ?? 'No description.'),
+                        ),
+                        actions: [
+                          TextButton(
+                            child: const Text("Close"),
+                            onPressed: () => Navigator.of(context).pop(),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(16),
+                  child: Stack(
                     alignment: Alignment.center,
                     children: [
                       // Tip background image
@@ -30,48 +51,38 @@ class TipsCarousel extends StatelessWidget {
                         height: 100,
                         fit: BoxFit.cover,
                       ),
-
-                      // Semi-transparent dark overlay for better text visibility
+                      // Semi-transparent dark overlay
                       Container(
                         width: 120,
                         height: 100,
                         decoration: BoxDecoration(
-                          // ignore: deprecated_member_use
                           color: Colors.black.withOpacity(0.4),
                           borderRadius: BorderRadius.circular(16),
                         ),
                       ),
-
-                      // Centered Tip Title Text
+                      // Centered title
                       Positioned(
                         bottom: 10,
                         left: 0,
                         right: 0,
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(16),
-                          bottomRight: Radius.circular(16),
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Text(
-                          tip['title']!,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                            fontFamily: 'Merienda One',
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Text(
+                            tip['title']!,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontFamily: 'Merienda One',
+                            ),
+                            textAlign: TextAlign.left,
+                            maxLines: 3,
+                            overflow: TextOverflow.ellipsis,
                           ),
-                          textAlign: TextAlign.left,
-                          maxLines: 3,
-                          
                         ),
                       ),
-                    ),
-                   ),
                     ],
                   ),
+                ),
               );
             },
           ),

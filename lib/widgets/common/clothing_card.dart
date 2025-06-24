@@ -11,7 +11,6 @@ class ClothingCard extends StatelessWidget {
   final String image;
   final bool isFavorite;
   final VoidCallback onFavoriteToggle;
-
   const ClothingCard({
     super.key,
     required this.id,

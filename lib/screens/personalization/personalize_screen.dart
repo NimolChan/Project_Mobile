@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stylishcloset/widgets/common/navigation.dart';
+import '../../widgets/personalize/all_items_page.dart';
 import '../../widgets/personalize/tips_carousel.dart';
 import '../../widgets/personalize/recommendation_dropdown.dart';
 import '../../widgets/personalize/clothing_grid.dart';
@@ -33,7 +34,7 @@ class _PersonalizationScreenState extends State<PersonalizationScreen> {
           children: [
             /// Centered title
             const Text(
-              'Personalize',
+              'Personalization',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -87,12 +88,49 @@ class _PersonalizationScreenState extends State<PersonalizationScreen> {
                 onChanged: (value) {
                   setState(() => selectedCategory = value);
                 },
+                option: [
+                  'All',
+                  'Trendy',
+                  'Classy',
+                  'Formal',
+                  'Vintage',
+                  'Old Money',
+                  'Street wear',
+                  'Feminine',
+                  'Winter',
+                  'Summer',
+                  'Sporty',
+                  'Acubi',
+                ],
               ),
               const SizedBox(height: 12),
               ClothingGrid(
                 selectedCategory: selectedCategory,
                 selectedColor: null,
                 mode: 'category',
+                limit: 4, // Show only 4 items
+              ),
+              const SizedBox(height: 16),
+              Center(
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder:
+                            (_) => AllItemsPage(category: selectedCategory),
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    'View all',
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontStyle: FontStyle.italic,
+                      fontSize: 14,
+                    ),
+                  ),
+                ),
               ),
               const SizedBox(height: 24),
 
@@ -115,18 +153,45 @@ class _PersonalizationScreenState extends State<PersonalizationScreen> {
               ),
               const SizedBox(height: 12),
               ColorPicker(
+                selectedColor: selectedColor,
                 onColorSelected: (color) {
                   setState(() => selectedColor = color);
                 },
               ),
               const SizedBox(height: 12),
-              if (selectedColor != null)
-                ClothingGrid(
-                  selectedCategory: null,
-                  selectedColor: selectedColor,
-                  mode: 'color',
+              ClothingGrid(
+                selectedCategory: null,
+                selectedColor: selectedColor,
+                mode: 'color',
+                limit: 4, // Show only 4 items
+              ),
+              const SizedBox(height: 16),
+              Center(
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder:
+                            (_) => AllItemsPage(
+                              category: 'all',
+                              selectedColor:
+                                  selectedColor, // Pass the color to AllItemsPage
+                            ),
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    'View all',
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontStyle: FontStyle.italic,
+                      fontSize: 14,
+                    ),
+                  ),
                 ),
-              const SizedBox(height: 30),
+              ),
+              const SizedBox(height: 24),
 
               const Text(
                 "Random Outfit",
