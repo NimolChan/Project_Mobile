@@ -1,20 +1,3 @@
-// import 'package:flutter/material.dart';
-
-// class Favorites extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(title: Text("Favorites")),
-//       body: Center(
-//         child: ElevatedButton(
-//           onPressed: () => Navigator.pop(context),
-//           child: 
-//         ),
-//       ),
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
 import 'package:stylishcloset/widgets/common/clothing_card.dart';
 

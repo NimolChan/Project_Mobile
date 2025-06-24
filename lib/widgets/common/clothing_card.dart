@@ -42,17 +42,19 @@ class ClothingCard extends StatelessWidget {
               image: image,
               isFavorite: isFavorite,
               onFavoriteToggle: onFavoriteToggle,
+              onItemUpdated: (updatedItem) {
+                Navigator.pop(context, updatedItem);
+              },
             ),
           ),
-        );
+        ).then((updatedItem) {
+          if (updatedItem != null) {
+          }
+        });
       },
       child: Card(
         child: Stack(
           children: [
-            // Hero(
-            //   tag: 'product-image-$id',
-            //   child: Image.asset('assets/images/shirt1.png'),
-            // ),
             Center(
               child: Image.asset(
                 image,
@@ -70,12 +72,6 @@ class ClothingCard extends StatelessWidget {
                     color: isFavorite ? Colors.red : Colors.grey,
                     size: 24,
                   ),
-                  // onPressed: () {
-                  //   setState(() {
-                  //     isFavorited = !isFavorited;
-                  //   });
-                  // // This would call HomeScreen's toggleFavorite in a real implementation
-                  // },
                   onPressed: onFavoriteToggle,
                 ),
               )

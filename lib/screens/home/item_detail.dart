@@ -10,6 +10,7 @@ class ItemDetailPage extends StatelessWidget {
   final String image;
   final bool isFavorite;
   final VoidCallback onFavoriteToggle;
+  final Function(Map<String, dynamic>) onItemUpdated;
 
   const ItemDetailPage({
     super.key,
@@ -22,6 +23,7 @@ class ItemDetailPage extends StatelessWidget {
     required this.image,
     required this.isFavorite,
     required this.onFavoriteToggle,
+    required this.onItemUpdated,
   });
 
   @override
@@ -29,15 +31,15 @@ class ItemDetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        // actions: [
-        //   IconButton(
-        //     icon: Icon(
-        //       isFavorite ? Icons.favorite : Icons.favorite_border,
-        //       color: isFavorite ? Colors.red : Colors.white,
-        //     ),
-        //     onPressed: onFavoriteToggle,
-        //   ),
-        // ],
+        actions: [
+          IconButton(
+            icon: Icon(
+              isFavorite ? Icons.favorite : Icons.favorite_border,
+              color: isFavorite ? Colors.red : Colors.grey,
+            ),
+            onPressed: onFavoriteToggle,
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -68,7 +70,6 @@ class ItemDetailPage extends StatelessWidget {
               ),
             ),
            
-            // Product Info
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 20),
               child: Column(
@@ -78,10 +79,10 @@ class ItemDetailPage extends StatelessWidget {
                   Text("Name: $name", style: TextStyle(color: Colors.black, fontSize: 16)),
                   
                   const SizedBox(height: 10),
-                  Text("Color: $Color", style: TextStyle(color: Colors.black, fontSize: 16)),
+                  Text("Color: $color", style: TextStyle(color: Colors.black, fontSize: 16)),
                   
                   const SizedBox(height: 10),
-                  Text( "Tag: ${tags.join(', ')}", style: TextStyle(color: Colors.black, fontSize: 16)),
+                  Text("Tag: ${tags.join(', ')}", style: TextStyle(color: Colors.black, fontSize: 16)),
                   
                   const SizedBox(height: 10),
                   Text("Size: $size", style: TextStyle(color: Colors.black, fontSize: 16)),
@@ -89,14 +90,13 @@ class ItemDetailPage extends StatelessWidget {
                   const SizedBox(height: 10),
                   Text("Location: ${location.join(', ')}", style: TextStyle(color: Colors.black, fontSize: 16)),
                   
-                  // Add to Cart Button
                   const SizedBox(height: 30),
                   Center(
                     child: SizedBox(
                       width: 120,
                       height: 40,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () => _showEditDialog(context),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.deepPurpleAccent,
                           shape: RoundedRectangleBorder(
@@ -116,6 +116,73 @@ class ItemDetailPage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  void _showEditDialog(BuildContext context) {
+    final nameController = TextEditingController(text: name);
+    final colorController = TextEditingController(text: color);
+    final sizeController = TextEditingController(text: size);
+    final locationController = TextEditingController(text: location.join(', '));
+    final tagsController = TextEditingController(text: tags.join(', '));
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("Edit Item Info"),
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextField(
+                  controller: nameController,
+                  decoration: InputDecoration(labelText: "Name"),
+                ),
+                TextField(
+                  controller: colorController,
+                  decoration: InputDecoration(labelText: "Color"),
+                ),
+                TextField(
+                  controller: sizeController,
+                  decoration: InputDecoration(labelText: "Size"),
+                ),
+                TextField(
+                  controller: locationController,
+                  decoration: InputDecoration(labelText: "Location (comma separated)"),
+                ),
+                TextField(
+                  controller: tagsController,
+                  decoration: InputDecoration(labelText: "Tags (comma separated)"),
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text("Cancel"),
+            ),
+            TextButton(
+              onPressed: () {
+                final updatedItem = {
+                  'id': id,
+                  'name': nameController.text,
+                  'color': colorController.text,
+                  'size': sizeController.text,
+                  'location': locationController.text.split(',').map((e) => e.trim()).toList(),
+                  'tag': tagsController.text.split(',').map((e) => e.trim()).toList(),
+                  'image': image,
+                };
+                
+                onItemUpdated(updatedItem);
+                Navigator.pop(context);
+              },
+              child: Text("Save"),
+            ),
+          ],
+        );
+      },
     );
   }
 }
