@@ -89,7 +89,7 @@ class SettingsScreen extends StatelessWidget {
                 const SizedBox(height: 8),
                 // Email
                 const Text(
-                  'nezha@gmail.com',
+                  'sweet@gmail.com',
                   style: TextStyle(fontSize: 18, color: Color.fromARGB(255, 135, 134, 134)),
                 ),
               ],

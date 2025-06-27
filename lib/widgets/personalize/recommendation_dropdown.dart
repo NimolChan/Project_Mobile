@@ -216,7 +216,6 @@ class _SampleUsageState extends State<SampleUsage> {
           },
           option: getAllTags().map(displayTag).toList(),
         ),
-        // Other widgets...
       ],
     );
   }

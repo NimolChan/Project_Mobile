@@ -35,8 +35,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Account created! Please log in.')),
     );
-
+    // Simulate a delay for account creation
     Future.delayed(const Duration(seconds: 2), () {
+      // Navigate to login screen with prefilled email and password
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(

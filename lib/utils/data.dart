@@ -13,56 +13,55 @@ final List<Map<String, dynamic>> clothes = [
     "tag": ['Trendy'],
     "type": "Shirt",
     "price": 89.99,
-    // "image": "https://example.com/images/jacket_bloom.jpg"
-    "image": "assets/images/c1.png"
+    "image": "assets/images/OF1.png"
   },
   {
     "id": 2,
-    "name": "Classic White Tee",
+    "name": "Formal Pants",
     "color": "White",
-    "colorTag": Colors.white,
+    "colorTag": Colors.black,
     "size": "L",
     "location": ["Los Angeles", "Store 1"],
     "tag": ["Classy", "Formal"],
     "type": "Pants",
     "price": 19.99,
-    "image": "assets/images/c2.png"
+    "image": "assets/images/OF4.png"
   },
   {
     "id": 3,
     "name": "Denim Jeans",
     "color": "Dark Blue",
-    "colorTag": Colors.blue,
+    "colorTag": Colors.black,
     "size": "32",
     "location": ["Chicago", "Store 3"],
     "tag": ["Formal", "Classy"],
-    "type": "Jacket",
+    "type": "Shirt",
     "price": 59.50,
-    "image": "assets/images/c3.png"
+    "image": "assets/images/OF3.png"
   },
   {
     "id": 4,
     "name": "Athletic Shorts",
     "color": "Black",
-    "colorTag": Colors.black,
+    "colorTag": Colors.white,
     "size": "M",
     "location": ["Miami", "Warehouse B"],
     "tag": ["Formal"],
-    "type": "Shoes",
+    "type": "Shirt",
     "price": 29.99,
-    "image": "assets/images/c3.png",
+    "image": "assets/images/OF2.png",
   },
   {
     "id": 5,
-    "name": "Hoodie Comfort",
+    "name": "Sneaker Casual",
     "color": "Gray",
-    "colorTag": Colors.grey,
+    "colorTag": Colors.blue,
     "size": "L",
     "location": ["Seattle", "Store 2"],
     "tag": ["Trendy", "Formal"],
-    "type": "Glasses",
+    "type": "Shoes",
     "price": 49.99,
-    "image": "assets/images/c5.png"
+    "image": "assets/images/menSneaker1.jpg"
   },
   {
     "id": 6,
@@ -72,25 +71,25 @@ final List<Map<String, dynamic>> clothes = [
     "size": "S",
     "location": ["San Diego", "Store 4"],
     "tag": ["Trendy", "Formal"],
-    "type": "Ring",
+    "type": "Watch",
     "price": 69.95,
-    "image": "assets/images/cardigan.jpg"
+    "image": "assets/images/OF7.png"
   },
   {
     "id": 7,
-    "name": "Polo Shirt",
+    "name": "Eyeglasses Trendy",
     "color": "Green",
     "colorTag": Colors.green,
     "size": "M",
     "location": ["Austin", "Warehouse A"],
     "tag": ["Trendy", "Formal"],
-    "type": "Watch",
+    "type": "Glasses",
     "price": 34.99,
-    "image": "assets/images/eyeglasses.jpg"
+    "image": "assets/images/Eyeglasses.jpg"
   },
   {
     "id": 8,
-    "name": "Leather Jacket",
+    "name": "Minimalist Earrings",
     "color": "Brown",
     "colorTag": Colors.brown,
     "size": "L",
@@ -98,7 +97,7 @@ final List<Map<String, dynamic>> clothes = [
     "tag": ["Trendy", "Formal"],
     "type": "Earring",
     "price": 129.99,
-    "image": "assets/images/menBracelet.jpg"
+    "image": "assets/images/OF10.png"
   },
   {
     "id": 9,
@@ -108,42 +107,44 @@ final List<Map<String, dynamic>> clothes = [
     "size": "34",
     "location": ["Denver", "Store 3"],
     "tag": ["Trendy", "Formal"],
-    "type": "Accessory",
+    "type": "Ring",
     "price": 44.95,
-    "image": "assets/images/menWatch.jpg"
+    "image": "assets/images/ring2.jpg"
   },
   {
     "id": 10,
-    "name": "Silk Blouse",
+    "name": "Blouse Elegant",
     "color": "Cream",
+    "colorTag": Colors.white,
     "size": "M",
     "location": ["San Francisco", "Store 6"],
     "tag": ["formal", "blouse"],
-    "type": "Blouse",
+    "type": "Jacket",
     "price": 79.99,
-    "image": "assets/images/menClothe.jpg"
+    "image": "assets/images/RL3.png"
   },
   {
     "id": 11,
-    "name": "Graphic Tee",
+    "name": "Sneaker Casual",
     "color": "Black",
     "size": "L",
     "location": ["Phoenix", "Store 7"],
-    "tag": ["graphic", "casual"],
-    "type": "T-Shirt",
+    "tag": ["graphic", "Casual"],
+    "type": "Shoes",
     "price": 24.99,
-    "image": "assets/images/MenDressPants.jpg"
+    "image": "assets/images/menSneaker.jpg"
   },
   {
     "id": 12,
-    "name": "Yoga Pants",
+    "name": "Bags",
     "color": "Dark Gray",
+    "colorTag": Colors.black,
     "size": "S",
     "location": ["Portland", "Warehouse C"],
-    "tag": ["yoga", "stretch"],
-    "type": "Pants",
+    "tag": ["Trendy", "stretch"],
+    "type": "Accessory",
     "price": 39.99,
-    "image": "assets/images/menWatch2.jpg"
+    "image": "assets/images/OF13.png"
   },
   {
     "id": 13,
@@ -288,138 +289,6 @@ final List<Map<String, dynamic>> clothes = [
     "price": 22.50,
     "image": "assets/images/menBelt1.jpg"
   }
-  // {
-  //   "id": 10,
-  //   "name": "Silk Blouse",
-  //   "color": "Cream",
-  //   "colorTag": Colors.yellow,
-  //   "size": "M",
-  //   "location": ["San Francisco", "Store 6"],
-  //   "tag": ["formal", "blouse"],
-  //   "type": "Blouse",
-  //   "price": 79.99,
-  //   "image": "https://example.com/images/silk_blouse.jpg"
-  // },
-  // {
-  //   "id": 11,
-  //   "name": "Graphic Tee",
-  //   "color": "Black",
-  //   "colorTag": Colors.black,
-  //   "size": "L",
-  //   "location": ["Phoenix", "Store 7"],
-  //   "tag": ["graphic", "casual"],
-  //   "type": "T-Shirt",
-  //   "price": 24.99,
-  //   "image": "https://example.com/images/graphic_tee.jpg"
-  // },
-  // {
-  //   "id": 12,
-  //   "name": "Yoga Pants",
-  //   "color": "Dark Gray",
-  //   "colorTag": Colors.grey,
-  //   "size": "S",
-  //   "location": ["Portland", "Warehouse C"],
-  //   "tag": ["yoga", "stretch"],
-  //   "type": "Pants",
-  //   "price": 39.99,
-  //   "image": "https://example.com/images/yoga_pants.jpg"
-  // },
-  // {
-  //   "id": 13,
-  //   "name": "Fleece Vest",
-  //   "color": "Navy",
-  //   "colorTag": Colors.blue,
-  //   "size": "M",
-  //   "location": ["Las Vegas", "Store 8"],
-  //   "tag": ["fleece", "layer"],
-  //   "type": "Vest",
-  //   "price": 54.99,
-  //   "image": "https://example.com/images/fleece_vest.jpg"
-  // },
-  // {
-  //   "id": 14,
-  //   "name": "Formal Trousers",
-  //   "color": "Charcoal",
-  //   "colorTag": Colors.black,
-  //   "size": "36",
-  //   "location": ["Atlanta", "Warehouse B"],
-  //   "tag": ["office", "formal"],
-  //   "type": "Trousers",
-  //   "price": 64.99,
-  //   "image": "https://example.com/images/formal_trousers.jpg"
-  // },
-  // {
-  //   "id": 15,
-  //   "name": "Raincoat Light",
-  //   "color": "Yellow",
-  //   "colorTag": Colors.yellow,
-  //   "size": "L",
-  //   "location": ["Houston", "Store 9"],
-  //   "tag": ["rain", "spring"],
-  //   "type": "Coat",
-  //   "price": 74.95,
-  //   "image": "https://example.com/images/raincoat_light.jpg"
-  // },
-  // {
-  //   "id": 16,
-  //   "name": "Striped Sweater",
-  //   "color": "Red/White",
-  //   "colorTag": Colors.red,
-  //   "size": "M",
-  //   "location": ["Orlando", "Store 10"],
-  //   "tag": ["knit", "casual"],
-  //   "type": "Sweater",
-  //   "price": 44.99,
-  //   "image": "https://example.com/images/striped_sweater.jpg"
-  // },
-  // {
-  //   "id": 17,
-  //   "name": "Linen Shirt",
-  //   "color": "Beige",
-  //   "colorTag": Colors.white,
-  //   "size": "L",
-  //   "location": ["Philadelphia", "Store 11"],
-  //   "tag": ["linen", "summer"],
-  //   "type": "Shirt",
-  //   "price": 52.99,
-  //   "image": "https://example.com/images/linen_shirt.jpg"
-  // },
-  // {
-  //   "id": 18,
-  //   "name": "Puffer Jacket",
-  //   "color": "Olive",
-  //   "colorTag": Colors.green,
-  //   "size": "XL",
-  //   "location": ["Detroit", "Warehouse D"],
-  //   "tag": ["winter", "puffer"],
-  //   "type": "Jacket",
-  //   "price": 99.95,
-  //   "image": "https://example.com/images/puffer_jacket.jpg"
-  // },
-  // {
-  //   "id": 19,
-  //   "name": "Running Tights",
-  //   "color": "Black",
-  //   "colorTag": Colors.black,
-  //   "size": "S",
-  //   "location": ["Charlotte", "Store 12"],
-  //   "tag": ["run", "sport"],
-  //   "type": "Tights",
-  //   "price": 34.50,
-  //   "image": "https://example.com/images/running_tights.jpg"
-  // },
-  // {
-  //   "id": 20,
-  //   "name": "Wool Coat",
-  //   "color": "Camel",
-  //   "colorTag": Colors.brown,
-  //   "size": "M",
-  //   "location": ["Columbus", "Warehouse E"],
-  //   "tag": ["wool", "formal"],
-  //   "type": "Coat",
-  //   "price": 149.99,
-  //   "image": "https://example.com/images/wool_coat.jpg"
-  // }
 ];
 
 final tips = [

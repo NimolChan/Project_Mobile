@@ -17,7 +17,7 @@ class ClothingGrid extends StatelessWidget {
     this.selectedCategory,
     this.selectedColor,
     required this.mode,
-    this.limit, // Add this
+    this.limit,
   });
 
   @override
@@ -80,12 +80,12 @@ class ClothingGrid extends StatelessWidget {
         return ClothingCard(
           id: item.id,
           name: item.name,
-          color: item.color, // Add this
-          size: item.size, // Add this
-          location: item.location, // Add this
+          color: item.color, 
+          size: item.size, 
+          location: item.location, 
           tag: item.tag,
           image: item.image,
-          isFavorite: false, // Add this
+          isFavorite: false, 
           onFavoriteToggle: () {
             // item.isFavorite = !item.isFavorite;
           },

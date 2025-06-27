@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import '../common/clothing_item.dart';
 import '../../utils/data.dart' as data;
 import '../common/clothing_card.dart';
 import '../../utils/model.dart';
@@ -56,14 +55,13 @@ class AllItemsPage extends StatelessWidget {
           return ClothingCard(
             id: item.id,
             name: item.name,
-            color: item.color, // Add this
-            size: item.size, // Add this
-            location: item.location, // Add this
+            color: item.color, 
+            size: item.size, 
+            location: item.location, 
             tag: item.tag,
             image: item.image,
-            isFavorite: false, // Add this
+            isFavorite: false, 
             onFavoriteToggle: () {
-              // item.isFavorite = !item.isFavorite;
             },
           );
         },

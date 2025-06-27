@@ -36,11 +36,6 @@ class _ClothingRecommendationSectionState
 
   @override
   Widget build(BuildContext context) {
-    // Debug: print selectedTag and selectedSubTag
-    // print(
-    //   'SelectedTag: '
-    //   '[33m$selectedTag[0m, SelectedSubTag: [33m$selectedSubTag[0m',
-    // );
 
     // Main tag/category filter
     final filteredByTag =
@@ -51,9 +46,7 @@ class _ClothingRecommendationSectionState
                 final tagValue = t.trim().toLowerCase();
                 final selectedValue = selectedTag.trim().toLowerCase();
                 final isMatch = tagValue == selectedValue;
-                // print(
-                //   'Item: [36m${item.name}[0m | tags: [32m${item.tag}[0m | comparing: [$tagValue] == [$selectedValue] | match: $isMatch',
-                // );
+
                 return isMatch;
               });
               return match;
@@ -68,9 +61,6 @@ class _ClothingRecommendationSectionState
                 final tagValue = t.trim().toLowerCase();
                 final selectedValue = selectedSubTag.trim().toLowerCase();
                 final isMatch = tagValue == selectedValue;
-                // print(
-                //   'SubTag Item: [36m${item.name}[0m | tags: [32m${item.tag}[0m | comparing: [$tagValue] == [$selectedValue] | match: $isMatch',
-                // );
                 return isMatch;
               });
               return match;
@@ -155,12 +145,12 @@ class _ClothingRecommendationSectionState
                   return ClothingCard(
                     id: item.id,
                     name: item.name,
-                    color: item.color, // Add this
-                    size: item.size, // Add this
-                    location: item.location, // Add this
+                    color: item.color, 
+                    size: item.size, 
+                    location: item.location, 
                     tag: item.tag,
                     image: item.image,
-                    isFavorite: false, // Add this
+                    isFavorite: false, 
                     onFavoriteToggle: () {
                       // item.isFavorite = !item.isFavorite;
                     },
@@ -196,12 +186,12 @@ class _ClothingRecommendationSectionState
                   return ClothingCard(
                     id: item.id,
                     name: item.name,
-                    color: item.color, // Add this
-                    size: item.size, // Add this
-                    location: item.location, // Add this
+                    color: item.color, 
+                    size: item.size, 
+                    location: item.location, 
                     tag: item.tag,
                     image: item.image,
-                    isFavorite: false, // Add this
+                    isFavorite: false, 
                     onFavoriteToggle: () {
                       // item.isFavorite = !item.isFavorite;
                     },
