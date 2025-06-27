@@ -10,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'item_detail.dart';
 
 class HomeScreen extends StatefulWidget {
+
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -262,7 +263,7 @@ class _HomeScreenAppState extends State<HomeScreen> {
           children: [
             /// Centered title
             const Text(
-              'Settings',
+              'Home',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,

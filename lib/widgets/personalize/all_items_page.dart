@@ -11,8 +11,9 @@ class AllItemsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Start by loading all clothing items from data
     List<ClothingItem> filtered = data.clothingItems;
-
+  // If a color is selected, filter the items by matching color
     if (selectedColor != null) {
       filtered =
           filtered
@@ -52,6 +53,7 @@ class AllItemsPage extends StatelessWidget {
         ),
         itemBuilder: (_, index) {
           final item = filtered[index];
+           // Return a ClothingCard widget for each item in the grid
           return ClothingCard(
             id: item.id,
             name: item.name,

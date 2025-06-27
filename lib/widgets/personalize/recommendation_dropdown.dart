@@ -43,7 +43,7 @@ class RecommendationDropdown extends StatefulWidget {
   final String selected;
   final void Function(String) onChanged;
   final List<String> option;
-
+ // Constructor to receive selected option, callback and list of options
   const RecommendationDropdown({
     super.key,
     required this.selected,
@@ -56,7 +56,7 @@ class RecommendationDropdown extends StatefulWidget {
 }
 
 class _RecommendationDropdownState extends State<RecommendationDropdown> {
-  final GlobalKey _dropdownKey = GlobalKey();
+  final GlobalKey _dropdownKey = GlobalKey(); // Key for dropdown to position overlay
   final LayerLink _layerLink = LayerLink();
   OverlayEntry? _overlayEntry;
   late String selected;
@@ -66,7 +66,7 @@ class _RecommendationDropdownState extends State<RecommendationDropdown> {
     super.initState();
     selected = widget.selected;
   }
-
+  // Function to toggle dropdown visibility
   void _toggleDropdown() {
     if (_overlayEntry == null) {
       _overlayEntry = _createOverlayEntry();

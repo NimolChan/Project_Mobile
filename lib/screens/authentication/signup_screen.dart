@@ -7,12 +7,13 @@ class SignUpScreen extends StatefulWidget {
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
 }
-
+// Define the SignUpScreen widget
 class _SignUpScreenState extends State<SignUpScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmController = TextEditingController();
 
+  // Function to handle the sign-up logic
   void handleSignUp() {
     final email = emailController.text.trim();
     final password = passwordController.text.trim();
